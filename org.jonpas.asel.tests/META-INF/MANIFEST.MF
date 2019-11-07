@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.jonpas.asel.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: org.jonpas.asel.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.jonpas.asel.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.jonpas.asel,
+ org.junit.jupiter.api;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.jonpas.asel.tests;x-internal=true

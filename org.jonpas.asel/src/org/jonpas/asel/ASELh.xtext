@@ -1,0 +1,9 @@
+grammar org.jonpas.asel.ASELh with org.eclipse.xtext.common.Terminals
+
+generate aselh "http://www.jonpas.org/asel/ASELh"
+
+Model:
+	bye+=Bye*;
+	
+Bye:
+	'Bye' name=ID '!';

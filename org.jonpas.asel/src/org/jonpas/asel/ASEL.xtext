@@ -1,0 +1,9 @@
+grammar org.jonpas.asel.ASEL with org.eclipse.xtext.common.Terminals
+
+generate asel "http://www.jonpas.org/asel/ASEL"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.jonpas.asel
+Bundle-ManifestVersion: 2
+Bundle-Name: org.jonpas.asel
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.jonpas.asel; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.jonpas.asel.asel.impl,
+ org.jonpas.asel.services,
+ org.jonpas.asel.validation,
+ org.jonpas.asel.asel,
+ org.jonpas.asel.parser.antlr,
+ org.jonpas.asel.scoping,
+ org.jonpas.asel.generator,
+ org.jonpas.asel.serializer,
+ org.jonpas.asel,
+ org.jonpas.asel.asel.util,
+ org.jonpas.asel.parser.antlr.internal,
+ org.jonpas.asel.asel.util,
+ org.jonpas.asel.asel,
+ org.jonpas.asel.asel.impl,
+ org.jonpas.asel.aselh,
+ org.jonpas.asel.aselh.util,
+ org.jonpas.asel.aselh.impl
+Import-Package: org.apache.log4j

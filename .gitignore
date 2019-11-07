@@ -73,4 +73,5 @@ generated
 generated-sources
 src-gen
 xtend-gen
+plugin.xml_gen
 .antlr-generator-*.jar
