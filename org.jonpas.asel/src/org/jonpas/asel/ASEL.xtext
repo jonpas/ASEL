@@ -1,9 +1,39 @@
-grammar org.jonpas.asel.ASEL with org.eclipse.xtext.common.Terminals
+grammar org.jonpas.asel.ASEL hidden(WS, SL_COMMENT)
 
 generate asel "http://www.jonpas.org/asel/ASEL"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Source:
+	use+=Use* init=Init? prepare=Prepare? run=Run?;
+
+Use:
+	'use' name=ID;
+
+Init:
+	'init' '{' name=ID? '}';
+
+Prepare:
+	'prepare' '{' name=ID? '}';
+
+Run:
+	'run' '{' name=ID? '}';
+
+terminal ID:
+	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+
+terminal INT returns ecore::EInt:
+	('0'..'9')+;
+
+terminal STRING:
+	'"' ('\\' .
+	/* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\' | '"'))* '"' | "'" ('\\' .
+	/* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\' | "'"))* "'";
+
+terminal SL_COMMENT:
+	'#'->'\n';
+
+terminal WS:
+	(' ' | '\t' | '\r' | '\n')+;
+
+terminal ANY_OTHER:
+	.;

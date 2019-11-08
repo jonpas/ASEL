@@ -1,1 +1,16 @@
-Hello world!
+# Remote Detonator - Base demo for Airsoft Explosive Language header [ASELh]
+
+use website
+use test
+
+init {
+
+}
+
+prepare {
+	
+}
+
+run {
+	
+}
