@@ -3,37 +3,189 @@ grammar org.jonpas.asel.ASEL hidden(WS, SL_COMMENT)
 generate asel "http://www.jonpas.org/asel/ASEL"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-Source:
+// Base program
+Model:
 	use+=Use* init=Init? prepare=Prepare? run=Run?;
 
-Use:
-	'use' name=ID;
-
 Init:
-	'init' '{' name=ID? '}';
+	{Init} 'init' '{' code+=(InitCode | PreProcInit)* '}';
 
 Prepare:
-	'prepare' '{' name=ID? '}';
+	{Prepare} 'prepare' '{' code+=(RunCode | PreProcRun)* '}';
 
 Run:
-	'run' '{' name=ID? '}';
+	{Run} 'run' '{' code+=(RunCode | PreProcRun)* '}';
 
-terminal ID:
-	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+Use:
+	'use' file=ID;
 
-terminal INT returns ecore::EInt:
+	// Code structure
+InitCode:
+	InitPin | InitVar | InitClass | PageHandler | InitWiFi | AnyCode;
+
+RunCode:
+	ModePin | AssignVar | AnyCode;
+
+AnyCode:
+	FuncCall | MethodCall | Logical | Loop;
+
+	// init
+InitPin:
+	'pin' pin=ID '=' INT;
+
+InitVar:
+	VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
+
+InitSingle:
+	'=' NEGATE_OP? value=VarValue;
+
+InitArray:
+	{InitArray} ArrayAccess ('=' '{' value+=VarValue* '}')?;
+
+InitClass:
+	'class' name=ID '=' class=ID '(' param+=Param* ')';
+
+PageHandler:
+	'PageHandler' name=ID '{' code+=PageHandlerCode* '}';
+
+PageHandlerCode:
+	arg=HandleArg | return=Return | code=RunCode;
+
+HandleArg:
+	{HandleArg} 'handle' STRING '{' code+=PageHandlerCode* '}';
+
+Return:
+	'return' STRING;
+
+InitWiFi:
+	'WiFi' ssid=STRING password=STRING '{' buttonLinks+=WiFiLink* '}';
+
+WiFiLink:
+	button=STRING '->' name=ID;
+
+	// run
+ModePin:
+	mode=PIN_MODE name=ID;
+
+AssignVar:
+	name=ID '=' NEGATE_OP? (value=VarValue | MathExpr);
+
+	// any
+FuncCall:
+	function=ID '(' param+=Param* ')';
+
+MethodCall:
+	class=ID '.' method=ID '(' param+=Param* ')';
+
+PreProcInit:
+	PreProcRaw | PreProcIfdefInit;
+
+PreProcRun:
+	PreProcRaw | PreProcIfdefRun;
+
+PreProcRaw:
+	'raw{' raw=Anything '}raw';
+
+PreProcIfdefInit:
+	'ifdef' cond=Condition '{' code+=InitCode* '}';
+
+PreProcIfdefRun:
+	'ifdef' cond=Condition '{' code+=RunCode* '}';
+
+Param:
+	{Param} VarValue | FuncCall | MethodCall;
+
+	// Expressions
+Logical:
+	LogicalIf;
+
+LogicalIf:
+	'if' cond=Condition '{' code+=RunCode* '}' else+=LogicalElse*;
+
+LogicalElse:
+	{LogicalElse} 'else' ('if' nestedCond=Condition)? '{' code+=RunCode* '}';
+
+Loop:
+	LoopFor | LoopWhile;
+
+LoopFor:
+	'for' var=ID 'in' ForType '..' '='? ForType '{' code+=RunCode* '}';
+
+LoopWhile:
+	'while' cond=Condition '{' code+=RunCode* '}';
+
+Condition:
+	NEGATE_OP? ConditionType (LOGICAL_OP cond+=ConditionType)*;
+
+ConditionType:
+	{ConditionType} VarValue | Comparison | FuncCall | MethodCall;
+
+Comparison:
+	val1=VarValue comp=COMPARE_OP val2=VarValue;
+
+MathExpr:
+	value=VarValue subExpr+=MathSubExpr+;
+
+MathSubExpr:
+	MATH_OP value=VarValue;
+
+	// General
+VarValue:
+	BOOL | INT /* LONG same as INT */ | FLOAT /* DOUBLE same as FLOAT */ | CHAR | STRING | KEYWORD | ID | ID ArrayAccess;
+
+ForType:
+	ID | INT /* LONG same as int */ | FLOAT /* DOUBLE same as FLOAT */;
+
+ArrayAccess:
+	'[' (INT | ID) ']';
+
+Anything:
+	(ID | INT | STRING | WS | ANY_OTHER)*;
+
+terminal KEYWORD:
+	'pushed' | 'released' | 'on' | 'off';
+
+terminal PIN_MODE:
+	'out' | 'in';
+
+terminal VAR_TYPE:
+	'bool' | 'int' | 'long' | 'float' | 'double' | 'char' | 'string';
+
+terminal NEGATE_OP:
+	'!';
+
+terminal LOGICAL_OP:
+	'||' | '&&';
+
+terminal COMPARE_OP:
+	'==' | '!=' | '<' | '>' | '<=' | '>=';
+
+terminal MATH_OP:
+	'+' | '-' | '/' | '*' | '^';
+
+terminal BOOL returns ecore::EBoolean:
+	'true' | 'false';
+
+terminal FLOAT returns ecore::EFloat:
+	INT? '.' INT;
+
+terminal INT returns ecore::EInt: // Default (Terminals grammar)
 	('0'..'9')+;
 
-terminal STRING:
-	'"' ('\\' .
-	/* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\' | '"'))* '"' | "'" ('\\' .
-	/* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\' | "'"))* "'";
+terminal CHAR returns ecore::EChar:
+	"'" ('a'..'z' | 'A'..'Z') "'";
 
-terminal SL_COMMENT:
+terminal STRING: // Modified - Default (Terminals grammar)
+	'"' ('\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\' | '"'))* '"';
+
+terminal ID: // Default (Terminals grammar)
+	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+
+terminal SL_COMMENT: // Modified Default (Terminals grammar)
 	'#'->'\n';
 
-terminal WS:
+terminal WS: // Default (Terminals grammar)
 	(' ' | '\t' | '\r' | '\n')+;
 
-terminal ANY_OTHER:
+terminal ANY_OTHER: // Default (Terminals grammar)
 	.;
