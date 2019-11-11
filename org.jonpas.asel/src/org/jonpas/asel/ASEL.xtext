@@ -64,7 +64,7 @@ RETURN:
 	'->' return=STRING;
 
 InitWiFi:
-	WIFI ssid=STRING password=STRING '{' buttonLinks+=WiFiLink* '}';
+	WIFI ssid=STRING password=STRING pageFile=STRING styleFile=STRING '{' buttonLinks+=WiFiLink* '}';
 
 WiFiLink:
 	button=STRING '->' name=ID;

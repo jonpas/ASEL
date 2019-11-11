@@ -22,7 +22,7 @@ init {
 		-> "DETONATE"
 	}
 
-	wifi "RemoteDetonator" "remdettest" {
+	wifi "RemoteDetonator" "remdettest" "page.html" "style.css" {
 		"DETONATE" -> detonate
 		"TEST" -> test
 	}

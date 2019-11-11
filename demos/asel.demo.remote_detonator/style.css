@@ -1,22 +1,7 @@
-# Remote Detonator - Demo for Airsoft Explosive Language header [ASELh]
+/*
+ *Remote Detonator - Demo for Airsoft Explosive Language [ASEL]
+ */
 
-page{
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" name="viewport", content="width=device-width, initial-scale=1">
-    <title>Remote Detonator</title>
-    <style type="text/css">{{STYLE}}</style>
-  </head>
-  <body>
-    <div class="buttons">
-      <p><a class="button" href="/?detonate">{{DETONATE}}</a></p>
-    </div>
-  </body>
-</html>
-}page
-
-style{
 body {
   -webkit-appearance: none;
 }
@@ -47,4 +32,3 @@ p {
   vertical-align: top;
   padding: 8px 13px 6px;
 }
-}style
