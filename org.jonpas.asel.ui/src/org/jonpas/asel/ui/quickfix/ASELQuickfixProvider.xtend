@@ -4,6 +4,10 @@
 package org.jonpas.asel.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import org.jonpas.asel.validation.ASELValidator
+import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 
 /**
  * Custom quickfixes.
@@ -12,13 +16,18 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
  */
 class ASELQuickfixProvider extends DefaultQuickfixProvider {
 
-//	@Fix(ASELValidator.INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			val firstLetter = xtextDocument.get(issue.offset, 1)
-//			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+	@Fix(ASELValidator.INVALID_PIN_NAME)
+	def capitalizePinName(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Convert to all-caps', 'Convert to all capitals.', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			val firstLetter = xtextDocument.get(issue.offset, issue.length)
+			xtextDocument.replace(issue.offset, issue.length, firstLetter.toUpperCase)
+		]
+	}
+
+	/*@Fix(ASELValidator....)
+	def makeUniqueName() {
+		
+	}*/
 }

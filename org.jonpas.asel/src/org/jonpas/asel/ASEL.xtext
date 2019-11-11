@@ -37,7 +37,7 @@ AnyCode:
 
 	// init
 InitPin:
-	'pin' pin=ID '=' INT;
+	'pin' name=ID '=' value=INT;
 
 InitVar:
 	VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
@@ -46,7 +46,7 @@ InitSingle:
 	'=' NEGATE_OP? value=Param;
 
 InitArray:
-	{InitArray} ArrayAccess ('=' '{' value+=Param* '}')?;
+	data=ArrayAccess ('=' '{' value+=Param* '}')?;
 
 InitClass:
 	'class' name=ID '=' class=ID '(' param+=Param* ')';
@@ -67,14 +67,14 @@ InitWiFi:
 	WIFI ssid=STRING password=STRING pageFile=STRING styleFile=STRING '{' buttonLinks+=WiFiLink* '}';
 
 WiFiLink:
-	button=STRING '->' name=ID;
+	button=STRING '->' name=[PageHandler];
 
 	// run
 ModePin:
-	mode=PIN_MODE name=ID;
+	mode=PIN_MODE name=[InitPin];
 
 VarAssign:
-	name=ID ArrayAccess? MATH_OP? '=' NEGATE_OP? value=Param;
+	name=ID arrayLength=ArrayAccess? MATH_OP? '=' NEGATE_OP? value=Param;
 
 	// any
 FuncCall:
@@ -99,7 +99,7 @@ PreProcIfdefRun:
 	'ifdef' cond=Condition '{' code+=RunCode* '}';
 
 Param:
-	{Param} VarValue | FuncCall | MethodCall | MathExpr;
+	{Param} value=VarValue | FuncCall | MethodCall | MathExpr;
 
 	// Expressions
 Logical:
@@ -124,7 +124,7 @@ Condition:
 	NEGATE_OP? ConditionType (LOGICAL_OP NEGATE_OP? cond+=ConditionType)*;
 
 ConditionType:
-	{ConditionType} VarValue | Comparison | FuncCall | MethodCall;
+	{ConditionType} val=VarValue | Comparison | FuncCall | MethodCall;
 
 Comparison:
 	val1=VarValue comp=COMPARE_OP val2=VarValue;
@@ -137,13 +137,13 @@ MathSubExpr:
 
 	// General
 VarValue:
-	BOOL | INT /* LONG same as INT */ | FLOAT /* DOUBLE same as FLOAT */ | CHAR | STRING | KEYWORD | ID | ID ArrayAccess;
+	{VarValue} BOOL | {VarValue} INT /* LONG same as INT */ | {VarValue} FLOAT /* DOUBLE same as FLOAT */ | {VarValue} CHAR | {VarValue} STRING | {VarValue} KEYWORD | {VarValue} ID | ID ArrayAccess;
 
 ForType:
 	INT /* LONG same as INT */ | FLOAT /* DOUBLE same as FLOAT */ | ID;
 
 ArrayAccess:
-	'[' (INT | ID) ']';
+	'[' (length=INT | name=ID) ']';
 
 PIN_MODE:
 	'out' | 'in';

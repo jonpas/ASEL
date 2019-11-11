@@ -3,6 +3,16 @@
  */
 package org.jonpas.asel.validation
 
+import org.eclipse.xtext.validation.Check
+
+import org.eclipse.core.runtime.Path
+import org.eclipse.core.resources.ResourcesPlugin
+
+import org.jonpas.asel.asel.AselPackage
+import org.jonpas.asel.asel.InitPin
+import org.jonpas.asel.asel.InitWiFi
+import org.jonpas.asel.asel.InitArray
+import org.jonpas.asel.asel.InitVar
 
 /**
  * This class contains custom validation rules. 
@@ -10,16 +20,68 @@ package org.jonpas.asel.validation
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class ASELValidator extends AbstractASELValidator {
-	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					ASELPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
+
+	public static val INVALID_PIN_NAME = 'invalidPinName'
+
+	public static val MISSING_WIFI_PAGE = 'missingWiFiPage'
+	public static val MISSING_WIFI_STYLE = 'missingWiFiStyle'
+
+	public static val INVALID_ARRAY_INIT_LENGTH = 'invalidArrayInitLength'
+
+	int i = 0
+
+	@Check
+	def checkPinNameIsAllCaps(InitPin pin) {
+		for (i = 0; i < pin.name.length(); i++) {
+			if (!Character.isUpperCase(pin.name.charAt(i))) {
+				warning('Pin name should be all capitals', AselPackage.Literals.INIT_PIN__NAME, INVALID_PIN_NAME)
+				return
+			}
+		}
+	}
+
+	@Check
+	def checkWiFiFilesExist(InitWiFi wifi) {
+		val platformString = wifi.eResource.URI.toPlatformString(true);
+		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+		val proj = myFile.getProject();
+
+		if (!proj.getFile(wifi.pageFile).exists) {
+			error('Page file (' + wifi.pageFile + ') is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
+				MISSING_WIFI_PAGE)
+		}
+
+		if (!proj.getFile(wifi.styleFile).exists) {
+			error('Style file (' + wifi.styleFile + ') is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
+				MISSING_WIFI_STYLE)
+		}
+	}
+
+	@Check
+	def checkArrayInitLength(InitArray array) {
+		val intLength = array.data.length
+		val idLength = intLength // array.data.name.
+		val initLength = array.value.length
+
+		if (intLength > 0 && (intLength != 1 || intLength != initLength)) {
+			error('Incorrect amount of elements in array initializer (' + initLength + ' instead of ' + intLength + ')',
+				AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
+		} else if (idLength != "" && (idLength != 1 || idLength != initLength)) {
+			error('Incorrect amount of elements in array initializer (' + initLength + ' instead of ' + idLength + ')',
+				AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
+		}
+	}
+
+/*@Check
+ * def checkInitVarNameIsUnique(InitVar variable) {
+ * 	var superClasses = (variable.eContainer()) as InitVar).Class
+ * 	if (superClasses !== null) {
+ * 		for (c : superClasses) {
+ * 			if ((c != baseClass) && (baseClass.getName().equals(c.getName()))) {
+ * 				error("Class names hvae to be unique", AselPackage.Literals::..., ...)
+ * 				return
+ * 			}
+ * 		}
+ * 	}
+ }*/
 }

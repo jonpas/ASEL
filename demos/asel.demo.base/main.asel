@@ -24,7 +24,6 @@ init {
 
 	wifi "RemoteDetonator" "remdettest" "page.html" "style.css" {
 		"DETONATE" -> detonate
-		"TEST" -> test
 	}
 
 	pin BUTTON = 10
@@ -40,7 +39,7 @@ init {
 prepare {
 	out LED
 
-	neg = !true
+	b = !true
 
 	delay(getX())
 	c.method()

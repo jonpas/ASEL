@@ -11,20 +11,42 @@ import org.jonpas.asel.asel.Model
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
+import org.jonpas.asel.asel.AselPackage
+import org.jonpas.asel.validation.ASELValidator
 
 @ExtendWith(InjectionExtension)
 @InjectWith(ASELInjectorProvider)
 class ASELParsingTest {
-	@Inject
-	ParseHelper<Model> parseHelper
-	
+	@Inject ParseHelper<Model> parseHelper
+	@Inject extension ValidationTestHelper
+
 	@Test
-	def void loadModel() {
+	def void loadModelIncorrect() {
 		val result = parseHelper.parse('''
 			Hello Xtext!
 		''')
+		Assertions.assertNull(result, 'Parsing not correct')
+	}
+
+	@Test
+	def void loadModelCorrect() {
+		val result = parseHelper.parse('''
+			init {}
+			prepare {}
+			run {}
+		''')
 		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+
+	@Test
+	def void validatorPinNameAllCaps() {
+		val result = parseHelper.parse('''
+			init {
+				pin led = 0
+			}
+		''')
+		Assertions.assertNotNull(result)
+		result.assertWarning(AselPackage.Literals.INIT_PIN, ASELValidator.INVALID_PIN_NAME)
 	}
 }
