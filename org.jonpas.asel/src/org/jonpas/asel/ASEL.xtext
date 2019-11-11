@@ -43,7 +43,7 @@ InitVar:
 	VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
 
 InitSingle:
-	'=' NEGATE_OP? value=Param;
+	'=' (NEGATE_OP | SIGN)? value=Param;
 
 InitArray:
 	data=ArrayAccess ('=' '{' value+=Param* '}')?;
@@ -74,7 +74,7 @@ ModePin:
 	mode=PIN_MODE name=[InitPin];
 
 VarAssign:
-	name=ID arrayLength=ArrayAccess? MATH_OP? '=' NEGATE_OP? value=Param;
+	name=ID arrayLength=ArrayAccess? MATH_OP? '=' (NEGATE_OP | SIGN)? value=Param;
 
 	// any
 FuncCall:
@@ -137,13 +137,14 @@ MathSubExpr:
 
 	// General
 VarValue:
-	{VarValue} BOOL | {VarValue} INT /* LONG same as INT */ | {VarValue} FLOAT /* DOUBLE same as FLOAT */ | {VarValue} CHAR | {VarValue} STRING | {VarValue} KEYWORD | {VarValue} ID | ID ArrayAccess;
+	valueB=BOOL | valueI=INT /* LONG same as INT */ | valueF=FLOAT /* DOUBLE same as FLOAT */ | char=CHAR | string=STRING
+	| keyword=KEYWORD | name=ID | name=ID data=ArrayAccess;
 
 ForType:
 	INT /* LONG same as INT */ | FLOAT /* DOUBLE same as FLOAT */ | ID;
 
 ArrayAccess:
-	'[' (length=INT | name=ID) ']';
+	'[' (length=INT | variable=[InitVar]) ']';
 
 PIN_MODE:
 	'out' | 'in';
@@ -153,6 +154,9 @@ KEYWORD:
 
 VAR_TYPE:
 	'bool' | 'int' | 'long' | 'float' | 'double' | 'char' | 'string';
+
+SIGN:
+	'+' | '-';
 
 NEGATE_OP:
 	'!';

@@ -30,9 +30,10 @@ init {
 
 	char c = 'x'
 	string s = "string"
-	int x = 1
+	int x = 2
 	float y = 1.0
-	long arr[0] = {0 1 2 3 4}
+	long arr[5] = {0 1 2 3 4}
+	long arr[x] = {0 1}
 	bool b
 }
 

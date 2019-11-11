@@ -13,10 +13,12 @@ import org.jonpas.asel.asel.InitPin
 import org.jonpas.asel.asel.InitWiFi
 import org.jonpas.asel.asel.InitArray
 import org.jonpas.asel.asel.InitVar
+import org.jonpas.asel.asel.Model
+import org.jonpas.asel.asel.Init
 
 /**
  * This class contains custom validation rules. 
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class ASELValidator extends AbstractASELValidator {
@@ -28,11 +30,11 @@ class ASELValidator extends AbstractASELValidator {
 
 	public static val INVALID_ARRAY_INIT_LENGTH = 'invalidArrayInitLength'
 
-	int i = 0
+	public static val DUPLICATE_VARIABLE_NAME = 'duplicateVariableName'
 
 	@Check
 	def checkPinNameIsAllCaps(InitPin pin) {
-		for (i = 0; i < pin.name.length(); i++) {
+		for (var i = 0; i < pin.name.length(); i++) {
 			if (!Character.isUpperCase(pin.name.charAt(i))) {
 				warning('Pin name should be all capitals', AselPackage.Literals.INIT_PIN__NAME, INVALID_PIN_NAME)
 				return
@@ -47,12 +49,12 @@ class ASELValidator extends AbstractASELValidator {
 		val proj = myFile.getProject();
 
 		if (!proj.getFile(wifi.pageFile).exists) {
-			error('Page file (' + wifi.pageFile + ') is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
+			error('Page file "' + wifi.pageFile + '" is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
 				MISSING_WIFI_PAGE)
 		}
 
 		if (!proj.getFile(wifi.styleFile).exists) {
-			error('Style file (' + wifi.styleFile + ') is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
+			error('Style file "' + wifi.styleFile + '" is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
 				MISSING_WIFI_STYLE)
 		}
 	}
@@ -60,28 +62,28 @@ class ASELValidator extends AbstractASELValidator {
 	@Check
 	def checkArrayInitLength(InitArray array) {
 		val intLength = array.data.length
-		val idLength = intLength // array.data.name.
+		val idLength = array.data.variable.single.value.value.valueI
 		val initLength = array.value.length
 
-		if (intLength > 0 && (intLength != 1 || intLength != initLength)) {
-			error('Incorrect amount of elements in array initializer (' + initLength + ' instead of ' + intLength + ')',
-				AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
-		} else if (idLength != "" && (idLength != 1 || idLength != initLength)) {
-			error('Incorrect amount of elements in array initializer (' + initLength + ' instead of ' + idLength + ')',
-				AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
+		if (intLength > 0 && intLength != 1 && intLength != initLength) {
+			error('Incorrect amount of elements in array initializer (' + initLength + ' instead of ' + intLength +
+				') [INT]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
+		} else if (idLength != "" && idLength != 1 && idLength != initLength) {
+			error('Incorrect amount of elements in array initializer (' + initLength + ' instead of ' + idLength +
+				') [ID]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
 		}
 	}
 
-/*@Check
- * def checkInitVarNameIsUnique(InitVar variable) {
- * 	var superClasses = (variable.eContainer()) as InitVar).Class
- * 	if (superClasses !== null) {
- * 		for (c : superClasses) {
- * 			if ((c != baseClass) && (baseClass.getName().equals(c.getName()))) {
- * 				error("Class names hvae to be unique", AselPackage.Literals::..., ...)
- * 				return
- * 			}
- * 		}
- * 	}
- }*/
+	@Check
+	def checkInitVarNameIsUnique(InitVar variable) {
+		var superClasses = ((variable.eContainer()) as Init)
+		if (superClasses !== null) {
+			for (c : superClasses) {
+				if (c != baseClass && baseClass.name.equals(c.name)) {
+					error('Class name "' + c + '" not unique!', AselPackage.Literals.INIT_VAR__NAME, DUPLICATE_VARIABLE_NAME)
+					return
+				}
+			}
+		}
+	}
 }
