@@ -1,20 +1,30 @@
-# Remote Detonator - Base demo for Airsoft Explosive Language header [ASELh]
+# Remote Detonator - Base demo for Airsoft Explosive Language [ASEL]
 
 use website
 
 init {
 	pin LED = 5
 
-	PageHandler detonate {
+	pagehandle detonate {
 		handle "detonate" {
-			return "RESET"
-			return "DETONATE"
+			handle "test" {
+				if LED == off {
+					LED = on
+					raw"
+						return \"RESET\"
+					"
+				} else {
+					LED = off
+					-> "DETONATE"
+				}
+			}
 		}
-		return "DETONATE"
+		-> "DETONATE"
 	}
 
-	WiFi "RemoteDetonator" "remdettest" {
+	wifi "RemoteDetonator" "remdettest" {
 		"DETONATE" -> detonate
+		"TEST" -> test
 	}
 
 	pin BUTTON = 10
@@ -35,11 +45,15 @@ prepare {
 	delay(getX())
 	c.method()
 
-	raw{
-		# C/Arduino code
-	}raw
+	raw"
+		// C/Arduino code
+		x += y
+		x = x + y
+		out LED
+		\"out LED\"
+	"
 
-	ifdef !b {
+	ifdef test {
 		delay(100)
 	}
 }
@@ -55,4 +69,6 @@ run {
 		x = 1
 		y = 5
 	}
+
+	wifi
 }

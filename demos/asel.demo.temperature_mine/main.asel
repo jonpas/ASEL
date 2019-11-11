@@ -1,0 +1,91 @@
+# Temperature Mine - Demo for Airsoft Explosive Language [ASEL]
+#
+# Plays alarm sound over speaker on temeprature change.
+
+use DHT
+
+init {
+	pin dhtPin = 24
+
+	long dhtDelay = 2000 # DHT22 is slow, measurements should only be made every 2 seconds
+	int tempCalibrations = 5
+	float tempDiffActivation = 5.0 # Activation within 5 degrees Celsius difference
+
+	int speakerPin = 14
+	int speakerChannel = 0
+	double toneFreqHz = 2000 # Most used frequency on alarms and sirens is 1-3 kHz
+
+	float baseTemp[tempCalibrations]
+
+	int baseTemps
+	float baseTempAvg
+	long lastTempRead
+	float temp
+	bool playSpeaker
+
+	# Initialize DHT
+	class dht = DHT(dhtPin DHT22)
+}
+
+prepare {
+	ifdef ESP8266 || ESP32 {
+		# Setup speaker (PWM with ledc driver)
+		ledcSetup(speakerChannel toneFreqHz 8)
+		ledcAttachPin(speakerPin speakerChannel)
+	}
+
+	# Start DHT
+	dht.begin()
+}
+
+run {
+	# First temperature readings for calibration
+	while baseTemps < tempCalibrations {
+		delay(dhtDelay)
+		baseTemp[baseTemps] = dht.readTemperature()
+
+		# Ignore invalid measurement (repeat)
+		if !isNan(baseTemp[baseTemps]) {
+			baseTemps += 1
+		}
+	}
+
+# Establish average temperature from initial measurements
+	if baseTempAvg == 0.0 {
+		lastTempRead = millis()
+
+		for baseTemps in 0 -> tempCalibrations {
+			baseTempAvg += baseTemp[baseTemps]
+		}
+		baseTempAvg /= baseTemps
+	}
+
+	# Measure temperature every few seconds (required delay)
+	nextRead = lastTempRead + dhtDelay
+	currentTime = millis()
+	if nextRead < currentTime {
+		temp = dht.readTemperature()
+
+		# Ignore invalid measurement
+		if !isnan(temp) {
+			# Catch temperature difference
+			currentTempDiffLow = temp - tempDiffActivation
+			currentTempDiffHigh = temp + tempDiffActivation
+			if currentTempDiffLow < baseTempAvg || currentTempDiffHigh > baseTempAvg {
+				playSpeaker = true
+			}
+
+			lastTempRead = millis()
+		}
+	}
+
+	# Play speaker if sensor activated
+	if playSpeaker {
+		ifdef ESP8266 || ESP32 {
+			ledcWriteTone(speakerChannel toneFreqHz)
+		}
+		ifdef !ESP8266 && !ESP32 {
+			tone(speakerPin toneFreqHz)
+		}
+	}
+}

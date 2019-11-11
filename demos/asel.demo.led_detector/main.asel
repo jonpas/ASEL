@@ -1,0 +1,52 @@
+# LED Detector - Demo for Airsoft Explosive Language [ASEL]
+#
+# Blinks LED in random intervals.
+# Turns LED on on button press.
+# Turns LED off on second button press.
+
+# Runs always before anything else, outside of `prepare` and `run`
+init {
+	pin LED = 16
+	pin BUTTON = 0
+
+	long buttonState
+	long lastButtonState
+	long delayOn
+	long delayOff
+}
+
+# Runs once on power on or reset
+prepare {
+	out LED
+	in BUTTON
+
+	randomSeed(analogRead(0))
+}
+
+# Loops forever
+run {
+	buttonState = BUTTON
+
+	if buttonState != lastButtonState {
+		if buttonState == pushed {
+			# If current state is pushed, button went from off to on
+			LED = on
+		} else {
+			# If current state is released, button went from on to off
+			LED = off
+		}
+	} else {
+		# Generate on and off delays between 0.1 and 1 seconds
+		delayOn = random(100 1000)
+		delayOff = random(100 1000)
+
+		# Turn LED on and off based on random delay generated above
+		LED = on
+		delay(delayOn)
+		LED = off
+		delay(delayOff)
+	}
+
+	delay(50) # Avoid bouncing (state change detection)
+	lastButtonState = buttonState
+}

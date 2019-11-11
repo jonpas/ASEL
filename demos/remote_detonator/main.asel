@@ -1,0 +1,40 @@
+# Remote Detonator - Demo for Airsoft Explosive Language [ASEL]
+#
+# Sets up HTTP server with detonate and reset options.
+# Turns LED on on detonate press.
+# Turns LED off on reset press.
+
+use website
+
+init {
+	pin LED = 5
+
+	# Logic for detonator
+	# Called from occurence of 'DETONATE' token on page
+	pagehandle detonate {
+		handle "detonate" {
+			if LED == off {
+				# Detonate
+				LED = on
+				-> "RESET"
+			} else {
+				# Reset
+				LED = off
+				-> "DETONATE"
+			}
+		}
+		-> "DETONATE"
+	}
+
+	wifi "RemoteDetonator" "remdettest" {
+		"DETONATE" -> detonate
+	}
+}
+
+prepare {
+	out LED
+}
+
+run {
+	wifi
+}
