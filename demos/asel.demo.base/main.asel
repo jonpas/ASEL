@@ -33,8 +33,10 @@ init {
 	int x = 2
 	float y = 1.0
 	long arr[5] = {0 1 2 3 4}
-	long arr[x] = {0 1}
+	long a[x] = {0 1}
+	int s = arr[4]
 	bool b
+	int t = x
 }
 
 prepare {

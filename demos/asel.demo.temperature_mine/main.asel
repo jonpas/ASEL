@@ -5,7 +5,7 @@
 use DHT
 
 init {
-	pin dhtPin = 24
+	pin DHTPIN = 24
 
 	long dhtDelay = 2000 # DHT22 is slow, measurements should only be made every 2 seconds
 	int tempCalibrations = 5

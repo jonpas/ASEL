@@ -26,6 +26,24 @@ class ASELQuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}
 
+	@Fix(ASELValidator.EXCESSIVE_SIGN)
+	def removeExcessiveSign(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove \'+\'', 'Remove excessive \'+\' sign.', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, 1, '')
+		]
+	}
+
+	@Fix(ASELValidator.INVALID_ASSIGN_NEGATION)
+	def removeInvalidAssignNegation(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove negation', 'Remove invalid negation \'!\' sign.', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, 1, '')
+		]
+	}
+
 	/*@Fix(ASELValidator....)
 	def makeUniqueName() {
 		

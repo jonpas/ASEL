@@ -43,7 +43,7 @@ InitVar:
 	VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
 
 InitSingle:
-	'=' (NEGATE_OP | SIGN)? value=Param;
+	'=' sign=SIGN? value=Param;
 
 InitArray:
 	data=ArrayAccess ('=' '{' value+=Param* '}')?;
@@ -74,7 +74,7 @@ ModePin:
 	mode=PIN_MODE name=[InitPin];
 
 VarAssign:
-	name=ID arrayLength=ArrayAccess? MATH_OP? '=' (NEGATE_OP | SIGN)? value=Param;
+	name=ID arrayLength=ArrayAccess? MATH_OP? '=' sign=SIGN? value=Param;
 
 	// any
 FuncCall:
@@ -155,8 +155,8 @@ KEYWORD:
 VAR_TYPE:
 	'bool' | 'int' | 'long' | 'float' | 'double' | 'char' | 'string';
 
-SIGN:
-	'+' | '-';
+SIGN returns ecore::EString:
+	'-' | '+' | NEGATE_OP;
 
 NEGATE_OP:
 	'!';
