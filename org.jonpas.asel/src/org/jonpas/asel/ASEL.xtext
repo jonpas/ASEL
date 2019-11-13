@@ -21,10 +21,10 @@ Use:
 
 	// Code structure
 InitCode:
-	InitPin | InitVar | InitClass | PageHandler | InitWiFi | AnyCode;
+	pin=InitPin | variable=InitVar | class=InitClass | pageHandle=PageHandler | InitWiFi | AnyCode;
 
 InitCodePP:
-	InitCode | PreProcInit;
+	cInit=InitCode | ppInit=PreProcInit;
 
 RunCode:
 	ModePin | VarAssign | {RunCode} WIFI | RETURN | AnyCode;
@@ -49,7 +49,7 @@ InitArray:
 	data=ArrayAccess ('=' '{' value+=Param* '}')?;
 
 InitClass:
-	'class' name=ID '=' class=ID '(' param+=Param* ')';
+	'class' name=ID '=' className=ID '(' param+=Param* ')';
 
 PageHandler:
 	'pagehandle' name=ID '{' code+=PageHandlerCode* '}';
@@ -78,10 +78,10 @@ VarAssign:
 
 	// any
 FuncCall:
-	function=ID '(' param+=Param* ')';
+	name=ID '(' param+=Param* ')';
 
 MethodCall:
-	class=ID '.' method=ID '(' param+=Param* ')';
+	name=ID '.' method=ID '(' param+=Param* ')';
 
 PreProcInit:
 	PreProcRaw | PreProcIfdefInit;

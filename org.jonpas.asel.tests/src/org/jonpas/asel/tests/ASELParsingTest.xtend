@@ -49,4 +49,101 @@ class ASELParsingTest {
 		Assertions.assertNotNull(result)
 		result.assertWarning(AselPackage.Literals.INIT_PIN, ASELValidator.INVALID_PIN_NAME)
 	}
+
+	@Test
+	def void validatorArrayInitLength() {
+		val resultInt = parseHelper.parse('''
+			init {
+				int a[5] = {0 1}
+			}
+		''')
+		Assertions.assertNotNull(resultInt)
+		resultInt.assertError(AselPackage.Literals.INIT_ARRAY, ASELValidator.INVALID_ARRAY_LENGTH)
+
+		val resultId = parseHelper.parse('''
+			init {
+				int x = 5
+				int a[x] = {0 1}
+			}
+		''')
+		Assertions.assertNotNull(resultId)
+		resultId.assertError(AselPackage.Literals.INIT_ARRAY, ASELValidator.INVALID_ARRAY_LENGTH)
+	}
+
+	@Test
+	def void validatorVarSignExcessive() {
+		val resultInit = parseHelper.parse('''
+			init {
+				int x = +2
+			}
+		''')
+		Assertions.assertNotNull(resultInit)
+		resultInit.assertWarning(AselPackage.Literals.INIT_SINGLE, ASELValidator.EXCESSIVE_SIGN)
+
+		val resultRun = parseHelper.parse('''
+			run {
+				x = +2
+			}
+		''')
+		Assertions.assertNotNull(resultRun)
+		resultRun.assertWarning(AselPackage.Literals.VAR_ASSIGN, ASELValidator.EXCESSIVE_SIGN)
+	}
+
+	@Test
+	def void validatorVarSignInvalidNegation() {
+		val resultInit = parseHelper.parse('''
+			init {
+				int x = !2
+			}
+		''')
+		Assertions.assertNotNull(resultInit)
+		resultInit.assertError(AselPackage.Literals.INIT_SINGLE, ASELValidator.INVALID_ASSIGN_NEGATION)
+
+		val resultRun = parseHelper.parse('''
+			run {
+				x = !"str"
+			}
+		''')
+		Assertions.assertNotNull(resultRun)
+		resultRun.assertError(AselPackage.Literals.VAR_ASSIGN, ASELValidator.INVALID_ASSIGN_NEGATION)
+	}
+
+	@Test
+	def void validatorNamesAreUnique() {
+		val resultPins= parseHelper.parse('''
+			init {
+				pin LED = 0
+				pin LED = 1
+			}
+		''')
+		Assertions.assertNotNull(resultPins)
+		resultPins.assertError(AselPackage.Literals.INIT_PIN, ASELValidator.NON_UNIQUE_NAME)
+
+		val resultVars = parseHelper.parse('''
+			init {
+				int x
+				int x
+			}
+		''')
+		Assertions.assertNotNull(resultVars)
+		resultVars.assertError(AselPackage.Literals.INIT_VAR, ASELValidator.NON_UNIQUE_NAME)
+
+		val resultClass = parseHelper.parse('''
+			init {
+				class x = X()
+				class x = Y()
+			}
+		''')
+		Assertions.assertNotNull(resultClass)
+		resultClass.assertError(AselPackage.Literals.INIT_CLASS, ASELValidator.NON_UNIQUE_NAME)
+
+		val resultPageHandle = parseHelper.parse('''
+			init {
+				pagehandle x {}
+				pagehandle x {}
+			}
+		''')
+		Assertions.assertNotNull(resultPageHandle)
+		resultPageHandle.assertError(AselPackage.Literals.PAGE_HANDLER, ASELValidator.NON_UNIQUE_NAME)
+	}
 }

@@ -43,9 +43,4 @@ class ASELQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, 1, '')
 		]
 	}
-
-	/*@Fix(ASELValidator....)
-	def makeUniqueName() {
-		
-	}*/
 }

@@ -9,10 +9,11 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.core.resources.ResourcesPlugin
 
 import org.jonpas.asel.asel.AselPackage
+import org.jonpas.asel.asel.Init
 import org.jonpas.asel.asel.InitPin
-import org.jonpas.asel.asel.InitWiFi
-import org.jonpas.asel.asel.InitArray
 import org.jonpas.asel.asel.InitSingle
+import org.jonpas.asel.asel.InitArray
+import org.jonpas.asel.asel.InitWiFi
 import org.jonpas.asel.asel.VarAssign
 
 /**
@@ -27,12 +28,12 @@ class ASELValidator extends AbstractASELValidator {
 	public static val MISSING_WIFI_PAGE = 'missingWiFiPage'
 	public static val MISSING_WIFI_STYLE = 'missingWiFiStyle'
 
-	public static val INVALID_ARRAY_INIT_LENGTH = 'invalidArrayInitLength'
+	public static val INVALID_ARRAY_LENGTH = 'invalidArrayLength'
 
 	public static val EXCESSIVE_SIGN = 'excessiveSign'
 	public static val INVALID_ASSIGN_NEGATION = 'invalidAssignNegation'
 
-	public static val DUPLICATE_VARIABLE_NAME = 'duplicateVariableName'
+	public static val NON_UNIQUE_NAME = 'nonUniqueName'
 
 	@Check
 	def checkPinNameIsAllCaps(InitPin pin) {
@@ -63,19 +64,21 @@ class ASELValidator extends AbstractASELValidator {
 
 	@Check
 	def checkArrayInitLength(InitArray array) {
-		val intLength = array.data.length
-		val idLength = array.data.variable.single.value.value.valueI
 		val initLength = array.value.length
+		val intLength = array.data.length
 
 		if (initLength > 0) {
 			if (intLength > 0 && intLength != 1 && intLength != initLength) {
 				error(
 					'Incorrect amount of elements in array initializer (' + initLength + ' given, expecting ' +
-						intLength + ') [INT]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
-			} else if (idLength != "" && idLength != 1 && idLength != initLength) {
-				error(
-					'Incorrect amount of elements in array initializer (' + initLength + ' given, expecting ' +
-						idLength + ') [ID]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_INIT_LENGTH)
+						intLength + ') [INT]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_LENGTH)
+			} else if (array.data.variable !== null) {
+				val idLength = array.data.variable.single.value.value.valueI
+				if (idLength != "" && idLength != 1 && idLength != initLength) {
+					error(
+						'Incorrect amount of elements in array initializer (' + initLength + ' given, expecting ' +
+							idLength + ') [ID]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_LENGTH)
+				}
 			}
 		}
 	}
@@ -106,16 +109,44 @@ class ASELValidator extends AbstractASELValidator {
 		}
 	}
 
-/*@Check
- * def checkInitVarNameIsUnique(InitVar variable) {
- * 	var superClasses = ((variable.eContainer()) as Init)
- * 	if (superClasses !== null) {
- * 		for (c : superClasses) {
- * 			if (c != baseClass && baseClass.name.equals(c.name)) {
- * 				error('Class name "' + c + '" not unique!', AselPackage.Literals.INIT_VAR__NAME, DUPLICATE_VARIABLE_NAME)
- * 				return
- * 			}
- * 		}
- * 	}
- }*/
+	@Check
+	def checkNamesAreUnique(Init init) {
+		val names = newHashSet
+
+		for (code : init.code) {
+			if (code.CInit !== null) {
+				val pin = code.CInit.pin
+				if (pin !== null) {
+					if (!names.add(pin.name)) {
+						error('Pin name \'' + pin.name + '\' not unique!', pin, AselPackage.Literals.INIT_PIN__NAME,
+							NON_UNIQUE_NAME)
+					}
+				}
+
+				val variable = code.CInit.variable
+				if (variable !== null) {
+					if (!names.add(variable.name)) {
+						error('Variable name \'' + variable.name + '\' not unique!', variable,
+							AselPackage.Literals.INIT_VAR__NAME, NON_UNIQUE_NAME)
+					}
+				}
+
+				val class = code.CInit.class_
+				if (class !== null) {
+					if (!names.add(class.name)) {
+						error('Class name \'' + class.name + '\' not unique!', class,
+							AselPackage.Literals.INIT_CLASS__NAME, NON_UNIQUE_NAME)
+					}
+				}
+
+				val pageHandle = code.CInit.pageHandle
+				if (pageHandle !== null) {
+					if (!names.add(pageHandle.name)) {
+						error('Page handler name \'' + pageHandle.name + '\' not unique!', pageHandle,
+							AselPackage.Literals.PAGE_HANDLER__NAME, NON_UNIQUE_NAME)
+					}
+				}
+			}
+		}
+	}
 }
