@@ -52,14 +52,18 @@ class ASELValidator extends AbstractASELValidator {
 		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
 		val proj = myFile.getProject();
 
-		if (!proj.getFile(wifi.pageFile).exists) {
-			error('Page file "' + wifi.pageFile + '" is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
-				MISSING_WIFI_PAGE)
+		if (wifi.pageFile != "") {
+			if (!proj.getFile(wifi.pageFile).exists) {
+				error('Page file "' + wifi.pageFile + '" is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
+					MISSING_WIFI_PAGE)
+			}
 		}
 
-		if (!proj.getFile(wifi.styleFile).exists) {
-			error('Style file "' + wifi.styleFile + '" is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
-				MISSING_WIFI_STYLE)
+		if (wifi.styleFile != "") {
+			if (!proj.getFile(wifi.styleFile).exists) {
+				error('Style file "' + wifi.styleFile + '" is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
+					MISSING_WIFI_STYLE)
+			}
 		}
 	}
 
