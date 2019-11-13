@@ -5,8 +5,12 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.jonpas.asel.ui.wizard.messages"; //$NON-NLS-1$
 	
-	public static String HelloWorldFile_Label;
-	public static String HelloWorldFile_Description;
+	public static String SourceFile_Label;
+	public static String SourceFile_Description;
+	public static String PageSourceFile_Label;
+	public static String PageSourceFile_Description;
+	public static String PageStyleFile_Label;
+	public static String PageStyleFile_Description;
 	public static String LEDProject_Label;
 	public static String LEDProject_Description;
 	public static String EmptyProject_Label;
