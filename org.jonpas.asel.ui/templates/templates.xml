@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template
+	id="pagehandle"
+	autoinsert="false"
+	context="org.jonpas.asel.ASEL.PageHandler"
+	deleted="false"
+	description="page handler"
+	enabled="true"
+	name="pagehandle">pagehandle ${name} {
+	handle "${button}" {
+		${cursor}
+	}
+	-&gt; "${return}"
+}</template>
+<template
+	id="raw"
+	autoinsert="false"
+	context="org.jonpas.asel.ASEL.PreProcRaw"
+	deleted="false"
+	description="raw C/Arduino code"
+	enabled="true"
+	name="raw">raw"
+	${cursor}// C/Arduino code here
+"</template>
+<template
+	id="init_wifi"
+	autoinsert="false"
+	context="org.jonpas.asel.ASEL.InitWiFi"
+	deleted="false"
+	description="initialize WiFi"
+	enabled="true"
+	name="wifi">wifi "${ssid}" "${pass}" "${page}.html" "${style}.css" {
+	${cursor}
+}</template>
+</templates>
