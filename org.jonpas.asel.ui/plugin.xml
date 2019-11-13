@@ -431,4 +431,61 @@
 			type="text">
 		</fileTypes>
 	</extension>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<category id="org.jonpas.asel.ui.category" name="ASEL">
+		</category>
+		<wizard
+			category="org.jonpas.asel.ui.category"
+			class="org.jonpas.asel.ui.ASELExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard"
+			id="org.jonpas.asel.ui.wizard.ASELNewProjectWizard"
+			name="ASEL Project"
+			icon="icons/new_ASEL_proj.gif"
+			project="true">
+		</wizard>
+	</extension>
+	<extension
+		point="org.eclipse.xtext.ui.projectTemplate">
+		<projectTemplateProvider
+			class="org.jonpas.asel.ui.ASELExecutableExtensionFactory:org.jonpas.asel.ui.wizard.ASELProjectTemplateProvider"
+			grammarName="org.jonpas.asel.ASEL">
+		</projectTemplateProvider>
+	</extension>
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="org.jonpas.asel.ui.wizard.ASELNewProjectWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="org.jonpas.asel.ui.wizard.ASELNewProjectWizard"/>
+		</perspectiveExtension>
+	</extension>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<category id="org.jonpas.asel.ui.category" name="ASEL">
+		</category>
+		<wizard
+			category="org.jonpas.asel.ui.category"
+			class="org.jonpas.asel.ui.ASELExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewFileWizard"
+			id="org.jonpas.asel.ui.wizard.ASELNewFileWizard"
+			name="ASEL File"
+			icon="icons/new_ASEL_file.png">
+		</wizard>
+	</extension>
+	<extension
+		point="org.eclipse.xtext.ui.fileTemplate">
+		<fileTemplateProvider
+			class="org.jonpas.asel.ui.ASELExecutableExtensionFactory:org.jonpas.asel.ui.wizard.ASELFileTemplateProvider"
+			grammarName="org.jonpas.asel.ASEL">
+		</fileTemplateProvider>
+	</extension>
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="org.jonpas.asel.ui.wizard.ASELNewFileWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="org.jonpas.asel.ui.wizard.ASELNewFileWizard"/>
+		</perspectiveExtension>
+	</extension>
 </plugin>
