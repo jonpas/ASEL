@@ -8,13 +8,13 @@ Model:
 	use+=Use* init=Init? prepare=Prepare? run=Run?;
 
 Init:
-	{Init} 'init' '{' code+=InitCodePP* '}';
+	{Init} 'init' '{' code+=(InitCode | PreProcInit)* '}';
 
 Prepare:
-	{Prepare} 'prepare' '{' code+=RunCodePP* '}';
+	{Prepare} 'prepare' '{' code+=(RunCode | PreProcRun)* '}';
 
 Run:
-	{Run} 'run' '{' code+=RunCodePP* '}';
+	{Run} 'run' '{' code+=(RunCode | PreProcRun)* '}';
 
 Use:
 	'use' file=ID;
@@ -23,14 +23,8 @@ Use:
 InitCode:
 	pin=InitPin | variable=InitVar | class=InitClass | pageHandle=PageHandler | InitWiFi | AnyCode;
 
-InitCodePP:
-	cInit=InitCode | ppInit=PreProcInit;
-
 RunCode:
 	ModePin | VarAssign | {RunCode} WIFI | RETURN | AnyCode;
-
-RunCodePP:
-	code=(RunCode | PreProcRun);
 
 AnyCode:
 	FuncCall | MethodCall | Logical | Loop;
@@ -40,7 +34,7 @@ InitPin:
 	'pin' name=ID '=' value=INT;
 
 InitVar:
-	VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
+	type=VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
 
 InitSingle:
 	'=' sign=SIGN? value=Param;
@@ -55,13 +49,13 @@ PageHandler:
 	'pagehandle' name=ID '{' code+=PageHandlerCode* '}';
 
 PageHandlerCode:
-	arg=HandleArg | code=(RunCodePP);
+	arg=HandleArg | code=(RunCode | PreProcRun);
 
 HandleArg:
-	{HandleArg} 'handle' STRING '{' code+=PageHandlerCode* '}';
+	'handle' name=STRING '{' code+=PageHandlerCode* '}';
 
 RETURN:
-	'->' return=STRING;
+	'->' name=STRING;
 
 InitWiFi:
 	WIFI ssid=STRING password=STRING pageFile=STRING styleFile=STRING '{' buttonLinks+=WiFiLink* '}';
@@ -99,32 +93,32 @@ PreProcIfdefRun:
 	'ifdef' cond=Condition '{' code+=RunCode* '}';
 
 Param:
-	{Param} value=VarValue | FuncCall | MethodCall | MathExpr;
+	value=VarValue | func=FuncCall | method=MethodCall | expr=MathExpr;
 
 	// Expressions
 Logical:
 	LogicalIf;
 
 LogicalIf:
-	'if' cond=Condition '{' code+=(RunCodePP)* '}' else+=LogicalElse*;
+	'if' cond=Condition '{' code+=(RunCode | PreProcRun)* '}' else+=LogicalElse*;
 
 LogicalElse:
-	{LogicalElse} 'else' ('if' nestedCond=Condition)? '{' code+=(RunCodePP)* '}';
+	{LogicalElse} 'else' ('if' nestedCond=Condition)? '{' code+=(RunCode | PreProcRun)* '}';
 
 Loop:
 	LoopFor | LoopWhile;
 
 LoopFor:
-	'for' var=ID 'in' ForType '->' '='? ForType '{' code+=(RunCodePP)* '}';
+	'for' name=ID 'in' ForType '->' '='? ForType '{' code+=(RunCode | PreProcRun)* '}';
 
 LoopWhile:
-	'while' cond=Condition '{' code+=(RunCodePP)* '}';
+	'while' cond=Condition '{' code+=(RunCode | PreProcRun)* '}';
 
 Condition:
-	NEGATE_OP? ConditionType (LOGICAL_OP NEGATE_OP? cond+=ConditionType)*;
+	NEGATE_OP? type=ConditionType (LOGICAL_OP sign+=NEGATE_OP? cond+=ConditionType)*;
 
 ConditionType:
-	{ConditionType} val=VarValue | Comparison | FuncCall | MethodCall;
+	val=VarValue | comp=Comparison | func=FuncCall | method=MethodCall;
 
 Comparison:
 	val1=VarValue comp=COMPARE_OP val2=VarValue;
@@ -196,6 +190,3 @@ terminal SL_COMMENT:
 
 terminal WS:
 	(' ' | '\t' | '\r' | '\n')+;
-
-terminal ANY_OTHER:
-	.;

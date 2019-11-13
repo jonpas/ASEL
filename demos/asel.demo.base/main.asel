@@ -39,6 +39,8 @@ init {
 	int z[2] = {0 1}
 
 	int t = x
+
+	class cl = ClassX()
 }
 
 prepare {
@@ -72,6 +74,14 @@ run {
 	} else {
 		x = 1
 		y = 5
+	}
+
+	for i in 0 -> 5 {
+		x += 1
+	}
+
+	while x == y {
+		# do something
 	}
 
 	wifi

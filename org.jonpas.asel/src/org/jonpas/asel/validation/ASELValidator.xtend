@@ -10,6 +10,7 @@ import org.eclipse.core.resources.ResourcesPlugin
 
 import org.jonpas.asel.asel.AselPackage
 import org.jonpas.asel.asel.Init
+import org.jonpas.asel.asel.InitCode
 import org.jonpas.asel.asel.InitPin
 import org.jonpas.asel.asel.InitSingle
 import org.jonpas.asel.asel.InitArray
@@ -114,8 +115,10 @@ class ASELValidator extends AbstractASELValidator {
 		val names = newHashSet
 
 		for (code : init.code) {
-			if (code.CInit !== null) {
-				val pin = code.CInit.pin
+			if (code !== null && code instanceof InitCode) {
+				val initCode = code as InitCode
+
+				val pin = initCode.pin
 				if (pin !== null) {
 					if (!names.add(pin.name)) {
 						error('Pin name \'' + pin.name + '\' not unique!', pin, AselPackage.Literals.INIT_PIN__NAME,
@@ -123,7 +126,7 @@ class ASELValidator extends AbstractASELValidator {
 					}
 				}
 
-				val variable = code.CInit.variable
+				val variable = initCode.variable
 				if (variable !== null) {
 					if (!names.add(variable.name)) {
 						error('Variable name \'' + variable.name + '\' not unique!', variable,
@@ -131,7 +134,7 @@ class ASELValidator extends AbstractASELValidator {
 					}
 				}
 
-				val class = code.CInit.class_
+				val class = initCode.class_
 				if (class !== null) {
 					if (!names.add(class.name)) {
 						error('Class name \'' + class.name + '\' not unique!', class,
@@ -139,7 +142,7 @@ class ASELValidator extends AbstractASELValidator {
 					}
 				}
 
-				val pageHandle = code.CInit.pageHandle
+				val pageHandle = initCode.pageHandle
 				if (pageHandle !== null) {
 					if (!names.add(pageHandle.name)) {
 						error('Page handler name \'' + pageHandle.name + '\' not unique!', pageHandle,

@@ -6,6 +6,37 @@ package org.jonpas.asel.ui.labeling
 import com.google.inject.Inject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+import org.jonpas.asel.asel.Use
+import org.jonpas.asel.asel.Init
+import org.jonpas.asel.asel.Prepare
+import org.jonpas.asel.asel.Run
+import org.jonpas.asel.asel.InitCode
+import org.jonpas.asel.asel.RunCode
+import org.jonpas.asel.asel.InitPin
+import org.jonpas.asel.asel.InitVar
+import org.jonpas.asel.asel.InitSingle
+import org.jonpas.asel.asel.InitArray
+import org.jonpas.asel.asel.InitClass
+import org.jonpas.asel.asel.PageHandler
+import org.jonpas.asel.asel.PageHandlerCode
+import org.jonpas.asel.asel.HandleArg
+import org.jonpas.asel.asel.RETURN
+import org.jonpas.asel.asel.InitWiFi
+import org.jonpas.asel.asel.WiFiLink
+import org.jonpas.asel.asel.ModePin
+import org.jonpas.asel.asel.FuncCall
+import org.jonpas.asel.asel.MethodCall
+import org.jonpas.asel.asel.PreProcRaw
+import org.jonpas.asel.asel.PreProcIfdefInit
+import org.jonpas.asel.asel.PreProcIfdefRun
+import org.jonpas.asel.asel.Param
+import org.jonpas.asel.asel.LogicalIf
+import org.jonpas.asel.asel.LogicalElse
+import org.jonpas.asel.asel.LoopFor
+import org.jonpas.asel.asel.LoopWhile
+import org.jonpas.asel.asel.Condition
+import org.jonpas.asel.asel.MathExpr
+import org.jonpas.asel.asel.MathSubExpr
 
 /**
  * Provides labels for EObjects.
@@ -19,12 +50,130 @@ class ASELLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
-	// Labels and icons can be computed like this:
-	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
+	def text(Use use) {
+		'use \'' + use.file + '\''
+	}
+
+	def text(Init init) {
+		'init'
+	}
+
+	def text(Prepare init) {
+		'prepare'
+	}
+
+	def text(Run init) {
+		'run'
+	}
+
+	def text(InitCode code) {
+		'code (init)'
+	}
+
+	def text(RunCode code) {
+		'code (run)'
+	}
+
+	def text(InitPin pin) {
+		'pin \'' + pin.name + '\''
+	}
+
+	def text(InitVar variable) {
+		variable.type + ' \'' + variable.name + '\''
+	}
+
+	def text(InitSingle variable) {
+		'assign'
+	}
+
+	def text(InitArray variable) {
+		'assign'
+	}
+
+	def text(InitClass cls) {
+		'class \'' + cls.name + '\''
+	}
+
+	def text(PageHandler pageHandler) {
+		'pagehandle \'' + pageHandler.name + '\''
+	}
+
+	def text(PageHandlerCode code) {
+		'code (page handler)'
+	}
+
+	def text(HandleArg arg) {
+		'handle \'' + arg.name + '\''
+	}
+
+	def text(RETURN ret) {
+		'return'
+	}
+
+	def text(InitWiFi wifi) {
+		'wifi \'' + wifi.ssid + '\''
+	}
+
+	def text(WiFiLink link) {
+		'link \'' + link.name.name + '\''
+	}
+
+	def text(ModePin pin) {
+		pin.mode + ' \'' + pin.name + '\''
+	}
+
+	def text(FuncCall func) {
+		'call function'
+	}
+
+	def text(MethodCall method) {
+		'call method'
+	}
+
+	def text(PreProcRaw raw) {
+		'raw'
+	}
+
+	def text(PreProcIfdefInit pp) {
+		'ifdef'
+	}
+
+	def text(PreProcIfdefRun pp) {
+		'ifdef'
+	}
+
+	def text(Param param) {
+		'parameter'
+	}
+
+	def text(LogicalIf logical) {
+		'if'
+	}
+
+	def text(LogicalElse logical) {
+		'else'
+	}
+
+	def text(LoopFor logical) {
+		'for \'' + logical.name + '\''
+	}
+
+	def text(LoopWhile logical) {
+		'while'
+	}
+
+	def text(Condition cond) {
+		'condition'
+	}
+
+	def text(MathExpr expr) {
+		'expression'
+	}
+
+	def text(MathSubExpr expr) {
+		'sub-expression'
+	}
+
 //	def image(Greeting ele) {
 //		'Greeting.gif'
 //	}
