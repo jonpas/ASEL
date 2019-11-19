@@ -13,26 +13,28 @@ init {
 	# Called from occurence of 'DETONATE' token on page
 	pagehandle detonate {
 		handle "detonate" {
-			if LED == off {
-				# Detonate
-				LED = on
-				-> "RESET"
-			} else {
-				# Reset
-				LED = off
-				-> "DETONATE"
-			}
+			LED = off
 		}
 		-> "DETONATE"
 	}
 
+	# Called from occurence of 'RESET' token on page
+	pagehandle reset {
+		handle "reset" {
+			LED = on
+		}
+		-> "RESET"
+	}
+
 	wifi "RemoteDetonator" "remdettest" "src/page.html" "src/style.css" {
 		"DETONATE" -> detonate
+		"RESET" -> reset
 	}
 }
 
 prepare {
 	out LED
+	LED = on # ESP32 has reversed LED low/high
 }
 
 run {
