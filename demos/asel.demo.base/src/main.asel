@@ -35,8 +35,8 @@ init {
 	bool b
 
 	long arr[5] = {0 1 2 3 4}
-	long a[x] = {0 1}
-	int z[2] = {0 1}
+	char a[x] = {'x' 'y'}
+	string z[2] = {"test" "other"}
 
 	int t = x
 
@@ -47,6 +47,7 @@ prepare {
 	out LED
 
 	b = !true
+	b = !false
 
 	delay(getX())
 	c.method()

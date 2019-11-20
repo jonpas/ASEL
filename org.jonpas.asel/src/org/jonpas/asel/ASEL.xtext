@@ -17,7 +17,7 @@ Run:
 	{Run} 'run' '{' code+=(RunCode | PreProcRun)* '}';
 
 Use:
-	'use' file=ID;
+	'use' name=ID;
 
 	// Code structure
 InitCode:
@@ -131,8 +131,17 @@ MathSubExpr:
 
 	// General
 VarValue:
-	valueB=BOOL | valueI=INT /* LONG same as INT */ | valueF=FLOAT /* DOUBLE same as FLOAT */ | char=CHAR | string=STRING
-	| keyword=KEYWORD | name=ID | name=ID data=ArrayAccess;
+	valueBool=VarValueBool | valueInt=VarValueInt /* LONG same as INT */ | valueFloat=VarValueFloat /* DOUBLE same as FLOAT */
+	| char=CHAR | string=STRING | keyword=KEYWORD | name=ID | name=ID data=ArrayAccess;
+
+VarValueBool:
+	value=BOOL;
+
+VarValueInt:
+	value=INT;
+
+VarValueFloat:
+	value=FLOAT;
 
 ForType:
 	INT /* LONG same as INT */ | FLOAT /* DOUBLE same as FLOAT */ | ID;
@@ -176,7 +185,7 @@ terminal FLOAT returns ecore::EFloat:
 terminal INT returns ecore::EInt: // Default (Terminals grammar)
 	('0'..'9')+;
 
-terminal CHAR returns ecore::EChar:
+terminal CHAR returns ecore::EString:
 	"'" ('a'..'z' | 'A'..'Z') "'";
 
 terminal STRING returns ecore::EString:

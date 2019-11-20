@@ -51,7 +51,7 @@ class ASELLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def text(Use use) {
-		'use \'' + use.file + '\''
+		'use \'' + use.name + '\''
 	}
 
 	def text(Init init) {
