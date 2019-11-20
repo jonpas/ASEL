@@ -1,4 +1,4 @@
-# Remote Detonator - Base demo for Airsoft Explosive Language [ASEL]
+# Showcase - Base demo for Airsoft Explosive Language [ASEL]
 
 use website
 
@@ -40,7 +40,7 @@ init {
 
 	int t = x
 
-	class cl = ClassX()
+	class cl = ClassX(x y)
 }
 
 prepare {

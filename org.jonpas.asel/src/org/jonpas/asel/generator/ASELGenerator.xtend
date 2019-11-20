@@ -11,6 +11,10 @@ import org.jonpas.asel.asel.Use
 import org.jonpas.asel.asel.InitPin
 import org.jonpas.asel.asel.InitVar
 import org.jonpas.asel.asel.InitClass
+import org.jonpas.asel.asel.VarValue
+import org.jonpas.asel.asel.ValueBool
+import org.jonpas.asel.asel.ValueInt
+import org.jonpas.asel.asel.ValueFloat
 
 /**
  * Generates code from your model files on save.
@@ -32,91 +36,55 @@ class ASELGenerator extends AbstractGenerator {
 		result += "\n"
 
 		// Init
-		result += "init {\n"
 		for (pin : resource.allContents.toIterable.filter(InitPin)) {
-			result += "\tconst int " + pin.name + " = " + pin.value + ";\n"
+			result += "const int " + pin.name + " = " + pin.value + ";\n"
 		}
 		result += "\n"
 
 		for (variable : resource.allContents.toIterable.filter(InitVar)) {
-			result += "\t" + variable.type + " " + variable.name
+			result += variable.type + " " + variable.name
 
 			val type = variable.type
 			val single = variable.single
 			val array = variable.array
 
 			if (array !== null) {
+				// Array initializer
 				result += "["
 				if (array.data.variable !== null) {
-					result += array.data.variable.name
+					result += array.data.variable.name // Variable length
 				} else {
-					result += array.data.length
+					result += array.data.length // Fixed length
 				}
 				result += "] = {"
 
 				for (value : array.value) {
-					if (type == "bool") {
-						result += value.value.valueBool.value
-					} else if (type == "int" || type == "long") {
-						result += value.value.valueInt.value
-					} else if (type == "float" || type == "double") {
-						result += value.value.valueFloat.value
-					} else if (type == "char") {
-						result += value.value.char
-					} else if (type == "string") {
-						result += "\"" + value.value.string + "\""
-					}
+					result += getValue(type, value.value)
 
-					if (value != array.value.get(array.value.length - 1)) {
+					if (value != array.value.last) {
 						result += ", "
 					}
 				}
 				result += "}"
 			} else {
+				// Single variable initializer
 				result += " = "
 
-				var done = false
-				if (single !== null) {
-					if (single.value.value === null) {
-						result += "TODO func/method call or expression" //single.value.func
-						done = true
-					} else if (single.value.value.name !== null) {
-						result += single.value.value.name
-						done = true
-					}
-				}
+				if (single === null) {
+					// Default initializers
+					result += getDefaultValue(type)
+				} else {
+					var value = single.value.value
 
-				if (!done) {
-					if (type == "bool") {
-						if (single !== null) {
-							result += single.value.value.valueBool.value
-						} else {
-							result += "false"
-						}
-					} else if (type == "int" || type == "long") {
-						if (single !== null) {
-							result += single.value.value.valueInt.value
-						} else {
-							result += "0"
-						}
-					} else if (type == "float" || type == "double") {
-						if (single !== null) {
-							result += single.value.value.valueFloat.value
-						} else {
-							result += "0.0"
-						}
-					} else if (type == "char") {
-						if (single !== null) {
-							result += single.value.value.char
-						} else {
-							result += "''"
-						}
-					} else if (type == "string") {
-						if (single !== null) {
-							result += "\"" + single.value.value.string + "\""
-						} else {
-							result += "\"\""
-						}
+					if (value === null) {
+						// Function/Method/Expression initializer
+						result += "TODO func/method call or expression" //single.value.func
+					} else if (value.name !== null) {
+						// Copy initializer
+						result += value.name
+					} else {
+						// Value initializer
+						result += getValue(type, value)
 					}
 				}
 			}
@@ -125,28 +93,76 @@ class ASELGenerator extends AbstractGenerator {
 		result += "\n"
 
 		for (className : resource.allContents.toIterable.filter(InitClass)) {
-			result += "\t" + className.className + " " + className.name + "("
+			result += className.className + " " + className.name + "("
+
 			for (param : className.param) {
-				result += param
-				if (param != className.param.get(className.param.length - 1)) {
+				var value = param.value
+
+				if (value === null) {
+					// Function/Method/Expression paremeter
+					result += "TODO func/method call or expression" //single.value.func
+				} else if (value.name !== null) {
+					// Variable parameter
+					result += value.name
+				} else {
+					// Value parameter
+					val type = (param.eContainer.eContainer as InitVar).type
+					result += getValue(type, value)
+				}
+
+				if (param != className.param.last) {
 					result += ", "
 				}
 			}
 			result += ");\n"
 		}
+
 		// TODO PageHandler, WiFi
-		result += "}\n\n"
+
+		result += "\n"
 
 		// Prepare
-		result += "prepare {\n"
+		result += "void setup() {\n"
 		// TODO Prepare Code
 		result += "}\n\n"
 
 		// Run
-		result += "run {\n"
+		result += "void loop() {\n"
 		// TODO Run Code
 		result += "}\n\n"
 
 		fsa.generateFile("main.c", result)
+	}
+
+	def String getValue(String type, VarValue value) {
+		if (type == "bool") {
+			return (value.value as ValueBool).value.toString()
+		} else if (type == "int" || type == "long") {
+			return (value.value as ValueInt).value.toString()
+		} else if (type == "float" || type == "double") {
+			return (value.value as ValueFloat).value.toString()
+		} else if (type == "char") {
+			return value.char
+		} else if (type == "string") {
+			return "\"" + value.string + "\""
+		} else {
+			return "{{ERROR: Unknown type}}" // Unreachable!
+		}
+	}
+
+	def String getDefaultValue(String type) {
+		if (type == "bool") {
+			return "false"
+		} else if (type == "int" || type == "long") {
+			return "0"
+		} else if (type == "float" || type == "double") {
+			return "0.0"
+		} else if (type == "char") {
+			return "''"
+		} else if (type == "string") {
+			return "\"\""
+		} else {
+			return "{{ERROR: Unknown type}}" // Unreachable!
+		}
 	}
 }

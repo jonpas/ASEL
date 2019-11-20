@@ -16,6 +16,8 @@ import org.jonpas.asel.asel.InitSingle
 import org.jonpas.asel.asel.InitArray
 import org.jonpas.asel.asel.InitWiFi
 import org.jonpas.asel.asel.VarAssign
+import org.jonpas.asel.asel.ValueBool
+import org.jonpas.asel.asel.ValueInt
 
 /**
  * This class contains custom validation rules. 
@@ -78,7 +80,7 @@ class ASELValidator extends AbstractASELValidator {
 					'Incorrect amount of elements in array initializer (' + initLength + ' given, expecting ' +
 						intLength + ') [INT]', AselPackage.Literals.INIT_ARRAY__VALUE, INVALID_ARRAY_LENGTH)
 			} else if (array.data.variable !== null) {
-				val idLength = array.data.variable.single.value.value.valueBool.value
+				val idLength = (array.data.variable.single.value.value.value as ValueInt).value
 				if (idLength != "" && idLength != 1 && idLength != initLength) {
 					error(
 						'Incorrect amount of elements in array initializer (' + initLength + ' given, expecting ' +
@@ -94,9 +96,9 @@ class ASELValidator extends AbstractASELValidator {
 			warning('Excessive \'+\' sign', AselPackage.Literals.INIT_SINGLE__SIGN, EXCESSIVE_SIGN)
 		}
 
-		val bool = variable.value.value.valueBool;
+		val bool = variable.value.value.value instanceof ValueBool;
 		val id = variable.value.value.name;
-		if (variable.sign == '!' && bool === null && id === null) {
+		if (variable.sign == '!' && !bool && id === null) {
 			error('Invalid negation (non-boolean)', AselPackage.Literals.INIT_SINGLE__SIGN, INVALID_ASSIGN_NEGATION)
 		}
 	}
@@ -107,9 +109,9 @@ class ASELValidator extends AbstractASELValidator {
 			warning('Excessive \'+\' sign', AselPackage.Literals.VAR_ASSIGN__SIGN, EXCESSIVE_SIGN)
 		}
 
-		val bool = variable.value.value.valueBool;
+		val bool = variable.value.value.value instanceof ValueBool;
 		val id = variable.value.value.name;
-		if (variable.sign == '!' && bool === null && id === null) {
+		if (variable.sign == '!' && !bool && id === null) {
 			error('Invalid negation (non-boolean)', AselPackage.Literals.VAR_ASSIGN__SIGN, INVALID_ASSIGN_NEGATION)
 		}
 	}

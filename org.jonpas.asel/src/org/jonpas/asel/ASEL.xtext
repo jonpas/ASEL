@@ -131,16 +131,16 @@ MathSubExpr:
 
 	// General
 VarValue:
-	valueBool=VarValueBool | valueInt=VarValueInt /* LONG same as INT */ | valueFloat=VarValueFloat /* DOUBLE same as FLOAT */
+	value=(ValueBool | ValueInt /* LONG same as INT */ | ValueFloat) /* DOUBLE same as FLOAT */
 	| char=CHAR | string=STRING | keyword=KEYWORD | name=ID | name=ID data=ArrayAccess;
 
-VarValueBool:
+ValueBool:
 	value=BOOL;
 
-VarValueInt:
+ValueInt:
 	value=INT;
 
-VarValueFloat:
+ValueFloat:
 	value=FLOAT;
 
 ForType:
