@@ -158,4 +158,9 @@ class ASELValidator extends AbstractASELValidator {
 			}
 		}
 	}
+
+	@Check
+	def checkTypeVarInit(InitSingle variable) {
+
+	}
 }

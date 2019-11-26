@@ -7,14 +7,17 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.emf.common.util.EList
 import org.jonpas.asel.asel.Use
 import org.jonpas.asel.asel.InitPin
 import org.jonpas.asel.asel.InitVar
 import org.jonpas.asel.asel.InitClass
+import org.jonpas.asel.asel.InitWiFi
 import org.jonpas.asel.asel.VarValue
 import org.jonpas.asel.asel.ValueBool
 import org.jonpas.asel.asel.ValueInt
 import org.jonpas.asel.asel.ValueFloat
+import org.jonpas.asel.asel.Param
 
 /**
  * Generates code from your model files on save.
@@ -29,10 +32,23 @@ class ASELGenerator extends AbstractGenerator {
 		// Use
 		result += "#include <Arduino.h>\n"
 		for (use : resource.allContents.toIterable.filter(Use)) {
-			result += "#include <" + use.name + ".h>\n";
+			result += "#include <" + use.name + ".h>\n"
 			
 		}
-		// TODO WiFi include if 'InitWiFi' present
+		// WiFi include
+		if (!resource.allContents.toIterable.filter(InitWiFi).empty) {
+			result += "\n"
+			result += '''
+				#if defined(ARDUINO_ARCH_ESP8266)
+				#include <ESP8266WiFi.h>
+				#include <ESP8266WebServer.h>
+				#elif defined(ARDUINO_ARCH_ESP32)
+				#include <WiFi.h>
+				#include <WebServer.h>
+				#endif
+				#include <PageBuilder.h>
+			'''
+		}
 		result += "\n"
 
 		// Init
@@ -74,18 +90,7 @@ class ASELGenerator extends AbstractGenerator {
 					// Default initializers
 					result += getDefaultValue(type)
 				} else {
-					var value = single.value.value
-
-					if (value === null) {
-						// Function/Method/Expression initializer
-						result += "TODO func/method call or expression" //single.value.func
-					} else if (value.name !== null) {
-						// Copy initializer
-						result += value.name
-					} else {
-						// Value initializer
-						result += getValue(type, value)
-					}
+					result += getParam(single.value)
 				}
 			}
 			result += ";\n"
@@ -93,28 +98,7 @@ class ASELGenerator extends AbstractGenerator {
 		result += "\n"
 
 		for (className : resource.allContents.toIterable.filter(InitClass)) {
-			result += className.className + " " + className.name + "("
-
-			for (param : className.param) {
-				var value = param.value
-
-				if (value === null) {
-					// Function/Method/Expression paremeter
-					result += "TODO func/method call or expression" //single.value.func
-				} else if (value.name !== null) {
-					// Variable parameter
-					result += value.name
-				} else {
-					// Value parameter
-					val type = (param.eContainer.eContainer as InitVar).type
-					result += getValue(type, value)
-				}
-
-				if (param != className.param.last) {
-					result += ", "
-				}
-			}
-			result += ");\n"
+			result += className.className + " " + className.name + "(" + getParams(className.param) + ");\n"
 		}
 
 		// TODO PageHandler, WiFi
@@ -164,5 +148,58 @@ class ASELGenerator extends AbstractGenerator {
 		} else {
 			return "{{ERROR: Unknown type}}" // Unreachable!
 		}
+	}
+
+	def String getParams(EList<Param> params) {
+		var result = ""
+
+		for (param : params) {
+			result += getParam(param)
+
+			if (param != params.last) {
+				result += ", "
+			}
+		}
+
+		return result
+	}
+
+	def String getParam(Param param) {
+		var result = ""
+
+		if (param.value === null) {
+			// Function/Method/Expression paremeter
+			result += getNonValueParam(param)
+		} else if (param.value.name !== null) {
+			// Variable parameter
+			result += param.value.name
+		} else {
+			// Value parameter
+			var paramContainer = param.eContainer.eContainer
+			while (!(paramContainer instanceof InitVar)) {
+				paramContainer = paramContainer.eContainer.eContainer
+			}
+
+			val type = (paramContainer as InitVar).type
+			result += getValue(type, param.value)
+		}
+
+		return result
+	}
+
+	def String getNonValueParam(Param param) {
+		var result = ""
+
+		if (param.func !== null) {
+			result += param.func.name + "(" + getParams(param.func.param) + ")"
+		} else if (param.method !== null) {
+			result += param.method.name + "." + param.method.method + "(" + getParams(param.method.param) + ")"
+		} else if (param.expr !== null) {
+			result += "TODO Expr"
+		} else {
+			result = "{{ERROR: Unknown param}}" // Unreachable!
+		}
+
+		return result
 	}
 }
