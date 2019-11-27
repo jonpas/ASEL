@@ -4,8 +4,6 @@
 # Turns LED on on detonate press.
 # Turns LED off on reset press.
 
-use website
-
 init {
 	pin LED = 5
 

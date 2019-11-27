@@ -21,9 +21,14 @@ init {
 		}
 		-> "DETONATE"
 	}
+	
+	pagehandle reset {
+
+	}
 
 	wifi "RemoteDetonator" "remdettest" "" "" {
 		"DETONATE" -> detonate
+		"RESET" -> reset
 	}
 
 	pin BUTTON = 10
@@ -32,7 +37,7 @@ init {
 	string s = "string"
 	int x = 2
 	float y = 1.0
-	bool b
+	bool b = 5
 
 	long arr[5] = {0 1 2 3 4}
 	char a[x] = {'x' 'y'}

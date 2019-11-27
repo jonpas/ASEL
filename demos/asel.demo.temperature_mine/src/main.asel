@@ -13,7 +13,7 @@ init {
 
 	int speakerPin = 14
 	int speakerChannel = 0
-	double toneFreqHz = 2000 # Most used frequency on alarms and sirens is 1-3 kHz
+	double toneFreqHz = 2000.0 # Most used frequency on alarms and sirens is 1-3 kHz
 
 	float baseTemp[tempCalibrations]
 

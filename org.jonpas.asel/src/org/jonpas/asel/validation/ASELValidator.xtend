@@ -18,6 +18,7 @@ import org.jonpas.asel.asel.InitWiFi
 import org.jonpas.asel.asel.VarAssign
 import org.jonpas.asel.asel.ValueBool
 import org.jonpas.asel.asel.ValueInt
+import org.jonpas.asel.asel.InitVar
 
 /**
  * This class contains custom validation rules. 
@@ -37,6 +38,8 @@ class ASELValidator extends AbstractASELValidator {
 	public static val INVALID_ASSIGN_NEGATION = 'invalidAssignNegation'
 
 	public static val NON_UNIQUE_NAME = 'nonUniqueName'
+
+	public static val INVALID_INIT_TYPE = 'invalidInitType'
 
 	@Check
 	def checkPinNameIsAllCaps(InitPin pin) {
@@ -160,7 +163,26 @@ class ASELValidator extends AbstractASELValidator {
 	}
 
 	@Check
-	def checkTypeVarInit(InitSingle variable) {
+	def checkInitType(InitVar variable) {
+		val type = variable.type
+		val single = variable.single
+		val arrayValue = variable.array.value
 
+		if (type == "bool") {
+			if (single !== null/* && single.value.value !== null*/) {
+				//if (!(single.value.value.value instanceof ValueBool)) {
+					error('Invalid initializing type', AselPackage.Literals.INIT_VAR__NAME, INVALID_INIT_TYPE)
+				//}
+			} else {
+				for (value : arrayValue) {
+					if (value.value !== null) {
+						if (!(value.value.value instanceof ValueBool)) {
+							error('Invalid initializing type', AselPackage.Literals.INIT_VAR__NAME,
+								INVALID_INIT_TYPE)
+						}
+					}
+				}
+			}
+		}
 	}
 }
