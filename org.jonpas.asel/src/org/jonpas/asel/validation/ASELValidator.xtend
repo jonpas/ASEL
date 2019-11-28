@@ -19,6 +19,9 @@ import org.jonpas.asel.asel.VarAssign
 import org.jonpas.asel.asel.ValueBool
 import org.jonpas.asel.asel.ValueInt
 import org.jonpas.asel.asel.InitVar
+import org.jonpas.asel.asel.ValueFloat
+import org.jonpas.asel.asel.ValueChar
+import org.jonpas.asel.asel.ValueString
 
 /**
  * This class contains custom validation rules. 
@@ -53,18 +56,18 @@ class ASELValidator extends AbstractASELValidator {
 
 	@Check
 	def checkWiFiFilesExist(InitWiFi wifi) {
-		val platformString = wifi.eResource.URI.toPlatformString(true);
-		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-		val proj = myFile.getProject();
+		val platformString = wifi.eResource.URI.toPlatformString(true)
+		val myFile = ResourcesPlugin.workspace.root.getFile(new Path(platformString))
+		val proj = myFile.project
 
-		if (wifi.pageFile != "") {
+		if (!wifi.pageFile.isNullOrEmpty) {
 			if (!proj.getFile(wifi.pageFile).exists) {
 				error('Page file "' + wifi.pageFile + '" is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
 					MISSING_WIFI_PAGE)
 			}
 		}
 
-		if (wifi.styleFile != "") {
+		if (!wifi.styleFile.isNullOrEmpty) {
 			if (!proj.getFile(wifi.styleFile).exists) {
 				error('Style file "' + wifi.styleFile + '" is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
 					MISSING_WIFI_STYLE)
@@ -166,21 +169,33 @@ class ASELValidator extends AbstractASELValidator {
 	def checkInitType(InitVar variable) {
 		val type = variable.type
 		val single = variable.single
-		val arrayValue = variable.array.value
+		val array = variable.array
 
-		if (type == "bool") {
-			if (single !== null/* && single.value.value !== null*/) {
-				//if (!(single.value.value.value instanceof ValueBool)) {
-					error('Invalid initializing type', AselPackage.Literals.INIT_VAR__NAME, INVALID_INIT_TYPE)
-				//}
-			} else {
-				for (value : arrayValue) {
-					if (value.value !== null) {
-						if (!(value.value.value instanceof ValueBool)) {
-							error('Invalid initializing type', AselPackage.Literals.INIT_VAR__NAME,
-								INVALID_INIT_TYPE)
-						}
-					}
+		if (single !== null && single.value !== null && single.value.value !== null) {
+			val varValue = single.value.value
+			val value = varValue.value
+
+			if (varValue.name.isNullOrEmpty && varValue.keyword.isNullOrEmpty) {
+				if ((type == "bool" && !(value instanceof ValueBool)) ||
+					((type == "int" || type == "long") && !(value instanceof ValueInt)) ||
+					((type == "float" || type == "double") && !(value instanceof ValueFloat)) ||
+					((type == "char") && !(value instanceof ValueChar)) ||
+					((type == "string") && !(value instanceof ValueString))) {
+					error('Invalid initializer type', AselPackage.Literals.INIT_VAR__SINGLE, INVALID_INIT_TYPE)
+				}
+			}
+		}
+
+		if (array !== null) {
+			for (param : array.value) {
+				val value = param.value.value
+
+				if ((type == "bool" && !(value instanceof ValueBool)) ||
+					((type == "int" || type == "long") && !(value instanceof ValueInt)) ||
+					((type == "float" || type == "double") && !(value instanceof ValueFloat)) ||
+					((type == "char") && !(value instanceof ValueChar)) ||
+					((type == "string") && !(value instanceof ValueString))) {
+					error('Invalid initializer type', AselPackage.Literals.INIT_VAR__ARRAY, INVALID_INIT_TYPE)
 				}
 			}
 		}

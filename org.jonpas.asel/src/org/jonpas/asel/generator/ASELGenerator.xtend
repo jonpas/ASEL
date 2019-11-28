@@ -10,17 +10,20 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.jonpas.asel.asel.InitClass
+import org.jonpas.asel.asel.Use
 import org.jonpas.asel.asel.InitPin
 import org.jonpas.asel.asel.InitVar
+import org.jonpas.asel.asel.InitClass
+import org.jonpas.asel.asel.PageHandler
 import org.jonpas.asel.asel.InitWiFi
-import org.jonpas.asel.asel.MathExpr
 import org.jonpas.asel.asel.Param
-import org.jonpas.asel.asel.Use
+import org.jonpas.asel.asel.MathExpr
 import org.jonpas.asel.asel.ValueBool
 import org.jonpas.asel.asel.ValueFloat
 import org.jonpas.asel.asel.ValueInt
 import org.jonpas.asel.asel.VarValue
+import org.jonpas.asel.asel.ValueChar
+import org.jonpas.asel.asel.ValueString
 
 /**
  * Generates code from your model files on save.
@@ -109,15 +112,31 @@ class ASELGenerator extends AbstractGenerator {
 		}
 		result += "\n"
 
-		// TODO PageHandler
+		// PageHandler
+		for (pageHandler : resource.allContents.toIterable.filter(PageHandler)) {
+			result += "pagehandle " + pageHandler.name + " {\n"
+
+			// TODO PageHandlerCode
+			// TODO ModePin
+			// TODO VarAssign
+			// TODO RETURN
+			// TODO FuncCall
+			// TODO MethodCall
+			// TODO Logical
+			// TODO Loop
+			// TODO PreProcRun
+
+			result += "}\n"
+		}
+		result += "\n"
 
 		// WiFi
 		if (!resource.allContents.toIterable.filter(InitWiFi).empty) {
 			var wifi = resource.allContents.toIterable.filter(InitWiFi).get(0)
 			
-			val platformString = wifi.eResource.URI.toPlatformString(true);
-			val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-			val proj = myFile.getProject();
+			val platformString = wifi.eResource.URI.toPlatformString(true)
+			val myFile = ResourcesPlugin.workspace.root.getFile(new Path(platformString))
+			val proj = myFile.project
 
 			result += '''
 				#if defined(ARDUINO_ARCH_ESP8266)
@@ -165,11 +184,20 @@ class ASELGenerator extends AbstractGenerator {
 			'''
 		}
 		result += "\n"
+		
+		// TODO PreProcInit
 
 		// Prepare
 		result += "void setup() {\n"
 
 		// TODO Prepare Code
+		// TODO ModePin
+		// TODO VarAssign
+		// TODO FuncCall
+		// TODO MethodCall
+		// TODO Logical
+		// TODO Loop
+		// TODO PreProcRun
 
 		// WiFi
 		if (!resource.allContents.toIterable.filter(InitWiFi).empty) {
@@ -187,25 +215,33 @@ class ASELGenerator extends AbstractGenerator {
 		// Run
 		result += "void loop() {\n"
 		// TODO Run Code
+		// TODO ModePin
+		// TODO VarAssign
+		// TODO WIFI
+		// TODO FuncCall
+		// TODO MethodCall
+		// TODO Logical
+		// TODO Loop
+		// TODO PreProcRun
 		result += "}\n\n"
 
 		fsa.generateFile("main.c", result)
 	}
 
 	def String getValue(String type, VarValue value) {
-		/*if (type == "bool") {
+		if (type == "bool") {
 			return (value.value as ValueBool).value.toString()
 		} else if (type == "int" || type == "long") {
 			return (value.value as ValueInt).value.toString()
 		} else if (type == "float" || type == "double") {
 			return (value.value as ValueFloat).value.toString()
 		} else if (type == "char") {
-			return value.char
+			return (value.value as ValueChar).char
 		} else if (type == "string") {
-			return "\"" + value.string + "\""
+			return "\"" + (value.value as ValueString).string + "\""
 		} else {
 			return "{{ERROR: Unknown type}}" // Unreachable!
-		}*/
+		}
 	}
 
 	def String getDefaultValue(String type) {

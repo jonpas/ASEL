@@ -146,4 +146,23 @@ class ASELParsingTest {
 		Assertions.assertNotNull(resultPageHandle)
 		resultPageHandle.assertError(AselPackage.Literals.PAGE_HANDLER, ASELValidator.NON_UNIQUE_NAME)
 	}
+
+	@Test
+	def void validatorInitTypesMatch() {
+		val resultInit = parseHelper.parse('''
+			init {
+				bool x = 5
+			}
+		''')
+		Assertions.assertNotNull(resultInit)
+		resultInit.assertError(AselPackage.Literals.INIT_VAR, ASELValidator.INVALID_INIT_TYPE)
+
+		val resultRun = parseHelper.parse('''
+			init {
+				int x[2] = {false, true}
+			}
+		''')
+		Assertions.assertNotNull(resultRun)
+		resultRun.assertError(AselPackage.Literals.INIT_VAR, ASELValidator.INVALID_INIT_TYPE)
+	}
 }

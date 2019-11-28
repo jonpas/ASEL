@@ -37,7 +37,7 @@ init {
 	string s = "string"
 	int x = 2
 	float y = 1.0
-	bool b = 5
+	bool bb = true
 
 	long arr[5] = {0 1 2 3 4}
 	char a[x] = {'x' 'y'}
