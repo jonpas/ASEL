@@ -23,10 +23,10 @@ init {
 	}
 	
 	pagehandle reset {
-
+		-> "RESET"
 	}
 
-	wifi "RemoteDetonator" "remdettest" "" "" {
+	wifi "Remote Detonator" "remdettest" "" "" {
 		"DETONATE" -> detonate
 		"RESET" -> reset
 	}
@@ -49,6 +49,8 @@ init {
 	int f = func(x(5 y(z())) 1 5 6)
 	int m = cl.met()
 	int e = 5 + 2
+
+	ledcSetup(x 2 "test" 'c')
 }
 
 prepare {
@@ -62,10 +64,10 @@ prepare {
 
 	raw"
 		// C/Arduino code
-		x += y
-		x = x + y
-		out LED
-		\"out LED\"
+		x += y;
+		x = x + y;
+		out LED;
+		s = \"raw string\";
 	"
 
 	ifdef test {
@@ -87,6 +89,7 @@ run {
 
 	for i in 0 -> 5 {
 		x += 1
+		x = x + 1
 	}
 
 	while x == y {

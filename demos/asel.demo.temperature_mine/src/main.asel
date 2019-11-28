@@ -30,7 +30,7 @@ init {
 prepare {
 	ifdef ESP8266 || ESP32 {
 		# Setup speaker (PWM with ledc driver)
-		ledcSetup(speakerChannel toneFreqHz 8)
+		ledcSetup(speakerChannel toneFreqHz 5)
 		ledcAttachPin(speakerPin speakerChannel)
 	}
 

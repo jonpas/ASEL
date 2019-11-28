@@ -21,13 +21,13 @@ Use:
 
 	// Code structure
 InitCode:
-	pin=InitPin | variable=InitVar | class=InitClass | pageHandle=PageHandler | InitWiFi | AnyCode;
+	pin=InitPin | variable=InitVar | class=InitClass | pageHandle=PageHandler | wifi=InitWiFi | any=AnyCode;
 
 RunCode:
-	ModePin | VarAssign | {RunCode} WIFI | RETURN | AnyCode;
+	pin=ModePin | variable=VarAssign | {RunCode} wifi=WIFI | return=RETURN | any=AnyCode;
 
 AnyCode:
-	FuncCall | MethodCall | Logical | Loop;
+	func=FuncCall | method=MethodCall | logical=Logical | loop=Loop;
 
 	// init
 InitPin:
@@ -43,7 +43,7 @@ InitArray:
 	data=ArrayAccess ('=' '{' value+=Param* '}')?;
 
 InitClass:
-	'class' name=ID '=' className=ID '(' param+=Param* ')';
+	'class' name=ID '=' class=ID '(' param+=Param* ')';
 
 PageHandler:
 	'pagehandle' name=ID '{' code+=PageHandlerCode* '}';
@@ -68,7 +68,7 @@ ModePin:
 	mode=PIN_MODE name=[InitPin];
 
 VarAssign:
-	name=ID arrayLength=ArrayAccess? MATH_OP? '=' sign=SIGN? value=Param;
+	name=ID arrayLength=ArrayAccess? operator=MATH_OP? '=' sign=SIGN? value=Param;
 
 	// any
 FuncCall:
@@ -78,10 +78,10 @@ MethodCall:
 	name=ID '.' method=ID '(' param+=Param* ')';
 
 PreProcInit:
-	PreProcRaw | PreProcIfdefInit;
+	raw=PreProcRaw | ifdef=PreProcIfdefInit;
 
 PreProcRun:
-	PreProcRaw | PreProcIfdefRun;
+	raw=PreProcRaw | ifdef=PreProcIfdefRun;
 
 PreProcRaw:
 	'raw' raw=STRING;
@@ -97,7 +97,7 @@ Param:
 
 	// Expressions
 Logical:
-	LogicalIf;
+	if=LogicalIf;
 
 LogicalIf:
 	'if' cond=Condition '{' code+=(RunCode | PreProcRun)* '}' else+=LogicalElse*;
@@ -106,10 +106,10 @@ LogicalElse:
 	{LogicalElse} 'else' ('if' nestedCond=Condition)? '{' code+=(RunCode | PreProcRun)* '}';
 
 Loop:
-	LoopFor | LoopWhile;
+	for=LoopFor | while=LoopWhile;
 
 LoopFor:
-	'for' name=ID 'in' ForType '->' '='? ForType '{' code+=(RunCode | PreProcRun)* '}';
+	'for' name=ID 'in' from=ForType '->' '='? to=ForType '{' code+=(RunCode | PreProcRun)* '}';
 
 LoopWhile:
 	'while' cond=Condition '{' code+=(RunCode | PreProcRun)* '}';
@@ -124,10 +124,10 @@ Comparison:
 	val1=VarValue comp=COMPARE_OP val2=VarValue;
 
 MathExpr:
-	val1=VarValue subExpr+=MathSubExpr+;
+	value=VarValue subExpr+=MathSubExpr+;
 
 MathSubExpr:
-	MATH_OP val2=VarValue;
+	operator=MATH_OP value=VarValue;
 
 	// General
 VarValue:
@@ -179,7 +179,7 @@ COMPARE_OP:
 MATH_OP:
 	'+' | '-' | '/' | '*' | '^';
 
-fragment WIFI:
+WIFI:
 	'wifi';
 
 terminal BOOL returns ecore::EBoolean:
