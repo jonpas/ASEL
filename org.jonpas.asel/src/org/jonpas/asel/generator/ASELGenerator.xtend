@@ -202,7 +202,15 @@ class ASELGenerator extends AbstractGenerator {
 	}
 
 	def String doInitPin(InitPin pin) {
-		return "const int " + pin.name + " = " + pin.value + ";\n"
+		var result = "const int " + pin.name + " = "
+
+		if (pin.macro !== null) {
+			result += pin.macro
+		} else {
+			result += pin.value
+		}
+
+		return result + ";\n"
 	}
 
 	def String doInitVar(InitVar variable) {

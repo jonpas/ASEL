@@ -3,7 +3,7 @@
 use website
 
 init {
-	pin LED = 5
+	pin LED = LED_BUILTIN
 
 	int ledStatus
 

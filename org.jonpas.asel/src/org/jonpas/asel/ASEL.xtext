@@ -31,7 +31,7 @@ AnyCode:
 
 	// init
 InitPin:
-	'pin' name=ID '=' value=INT;
+	'pin' name=ID '=' (value=INT | macro=PIN_MACROS);
 
 InitVar:
 	type=VAR_TYPE name=ID (single=InitSingle? | array=InitArray);
@@ -157,6 +157,9 @@ ForType:
 
 ArrayAccess:
 	'[' (length=INT | variable=[InitVar]) ']';
+
+PIN_MACROS:
+	'LED_BUILTIN';
 
 PIN_MODE:
 	'out' | 'in';
