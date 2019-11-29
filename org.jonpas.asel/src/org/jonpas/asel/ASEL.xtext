@@ -115,13 +115,16 @@ LoopWhile:
 	'while' cond=Condition '{' code+=(RunCode | PreProcRun)* '}';
 
 Condition:
-	NEGATE_OP? type=ConditionType (LOGICAL_OP sign+=NEGATE_OP? cond+=ConditionType)*;
+	sign=NEGATE_OP? type=ConditionType subCond+=SubCondition*;
+
+SubCondition:
+	operator=LOGICAL_OP sign=NEGATE_OP? cond=ConditionType;
 
 ConditionType:
-	val=VarValue | comp=Comparison | func=FuncCall | method=MethodCall;
+	value=VarValue | comp=Comparison | func=FuncCall | method=MethodCall;
 
 Comparison:
-	val1=VarValue comp=COMPARE_OP val2=VarValue;
+	valueLeft=VarValue comp=COMPARE_OP valueRight=VarValue;
 
 MathExpr:
 	value=VarValue subExpr+=MathSubExpr+;

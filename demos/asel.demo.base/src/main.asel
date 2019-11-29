@@ -5,10 +5,13 @@ use website
 init {
 	pin LED = 5
 
+	int ledStatus
+
 	pagehandle detonate {
 		handle "detonate" {
 			handle "test" {
-				if LED == off {
+				ledStatus = LED
+				if ledStatus == off {
 					LED = on
 					raw"
 						return \"RESET\"

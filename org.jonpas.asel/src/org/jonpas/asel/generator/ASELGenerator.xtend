@@ -35,6 +35,8 @@ import org.jonpas.asel.asel.LogicalIf
 import org.jonpas.asel.asel.LoopFor
 import org.jonpas.asel.asel.LoopWhile
 import org.jonpas.asel.asel.Condition
+import org.jonpas.asel.asel.ConditionType
+import org.jonpas.asel.asel.Comparison
 import org.jonpas.asel.asel.MathExpr
 import org.jonpas.asel.asel.VarValue
 import org.jonpas.asel.asel.ValueBool
@@ -42,6 +44,7 @@ import org.jonpas.asel.asel.ValueInt
 import org.jonpas.asel.asel.ValueFloat
 import org.jonpas.asel.asel.ValueChar
 import org.jonpas.asel.asel.ValueString
+import org.jonpas.asel.asel.ArrayAccess
 
 /**
  * Generates code from your model files on save.
@@ -50,7 +53,11 @@ import org.jonpas.asel.asel.ValueString
  */
 class ASELGenerator extends AbstractGenerator {
 
+	Resource resourceGlobal
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		resourceGlobal = resource
+
 		val model = resource.contents.get(0) as Model
 
 		// Header
@@ -207,13 +214,7 @@ class ASELGenerator extends AbstractGenerator {
 
 		if (array !== null) {
 			// Array initializer
-			result += "["
-			if (array.data.variable !== null) {
-				result += array.data.variable.name // Variable length
-			} else {
-				result += array.data.length // Fixed length
-			}
-			result += "] = {"
+			result += doArrayAccess(array.data) + " = {"
 
 			if (array.value.empty) {
 				result += "0"
@@ -334,9 +335,9 @@ class ASELGenerator extends AbstractGenerator {
 		var result = "pinMode(" + pin.name.name + ", "
 
 		if (pin.mode == "out") {
-			result += "out"
+			result += "OUTPUT"
 		} else if (pin.mode == "in") {
-			result += "in"
+			result += "INPUT"
 		} else {
 			result += "{{ERROR: Unknown 'ModePin.mode'}}" // Unreachable!
 		}
@@ -345,17 +346,15 @@ class ASELGenerator extends AbstractGenerator {
 	}
 
 	def String doVarAssign(VarAssign variable) {
-		// TODO `PIN = on/off` and `BUTTON = pushed/released`
 		var result = variable.name
 
+		// Pin write
+		if (isPinDefined(variable.name)) {
+			return "digitalWrite(" + variable.name + ", " + doParam(variable.value) + ");\n"
+		}
+
 		if (variable.arrayLength !== null) {
-			result += "["
-			if (variable.arrayLength.variable !== null) {
-				result += variable.arrayLength.variable.name
-			} else {
-				result += variable.arrayLength.length
-			}
-			result += "]"
+			result += doArrayAccess(variable.arrayLength)
 		}
 
 		result += " "
@@ -368,7 +367,13 @@ class ASELGenerator extends AbstractGenerator {
 			result += variable.sign
 		}
 
-		return result + doParam(variable.value) + ";\n"
+		val possiblePin = doParam(variable.value)
+		// Pin read
+		if (isPinDefined(possiblePin)) {
+			return "digitalRead(" + possiblePin + ");\n"
+		}
+
+		return result + possiblePin + ";\n"
 	}
 
 	def String doFuncCall(FuncCall func) {
@@ -383,7 +388,7 @@ class ASELGenerator extends AbstractGenerator {
 		if (preproc.raw !== null) {
 			return preproc.raw.raw + "\n"
 		} else if (preproc.ifdef !== null) {
-			var result = "#if " + doCondition(preproc.ifdef.cond) + "\n"
+			var result = "#if " + doCondition(preproc.ifdef.cond, true) + "\n"
 
 			for (ifdefCode : preproc.ifdef.code) {
 				result += doInitCode(ifdefCode)
@@ -399,7 +404,7 @@ class ASELGenerator extends AbstractGenerator {
 		if (preproc.raw !== null) {
 			return preproc.raw.raw + "\n"
 		} else if (preproc.ifdef !== null) {
-			var result = "#if " + doCondition(preproc.ifdef.cond) + "\n"
+			var result = "#if " + doCondition(preproc.ifdef.cond, true) + "\n"
 
 			for (code : preproc.ifdef.code) {
 				result += doRunCode(code)
@@ -467,13 +472,13 @@ class ASELGenerator extends AbstractGenerator {
 	}
 
 	def String doLogicalIf(LogicalIf logical) {
-		var result = "if (" + doCondition(logical.cond) + ") {\n" + doRunPreProcRunCodes(logical.code) + "}"
+		var result = "if (" + doCondition(logical.cond, false) + ") {\n" + doRunPreProcRunCodes(logical.code) + "}"
 
 		for (^else : logical.^else) {
 			result += " else "
 
 			if (^else.nestedCond !== null) {
-				result += "if (" + doCondition(^else.nestedCond) + ")"
+				result += "if (" + doCondition(^else.nestedCond, false) + ") "
 			}
 
 			result += "{\n" + doRunPreProcRunCodes(^else.code) + "}"
@@ -488,13 +493,59 @@ class ASELGenerator extends AbstractGenerator {
 	}
 
 	def String doLoopWhile(LoopWhile loop) {
-		return "while (" + doCondition(loop.cond) + ") {\n" + doRunPreProcRunCodes(loop.code) + "}\n"
+		return "while (" + doCondition(loop.cond, false) + ") {\n" + doRunPreProcRunCodes(loop.code) + "}\n"
 	}
 
-	def String doCondition(Condition cond) {
-		// TODO Condition
-		// TODO `PIN == on/off` and `BUTTON == pushed/released
-		return "TODO[CONDITION]"
+	def String doCondition(Condition cond, boolean preproc) {
+		var result = ""
+
+		if (cond.sign !== null) {
+			result += cond.sign
+		}
+
+		if (preproc) {
+			result += "defined("
+		}
+		result += doConditionType(cond.type)
+		if (preproc) {
+			result += ")"
+		}
+
+		for (subCond : cond.subCond) {
+			result += " " + subCond.operator + " "
+
+			if (subCond.sign !== null) {
+				result += subCond.sign
+			}
+
+			if (preproc) {
+				result += "defined("
+			}
+			result += doConditionType(subCond.cond)
+			if (preproc) {
+				result += ")"
+			}
+		}
+
+		return result
+	}
+
+	def String doConditionType(ConditionType condType) {
+		if (condType.value !== null) {
+			return getValue(condType.value)
+		} else if (condType.comp !== null) {
+			return doComparison(condType.comp)
+		} else if (condType.func !== null) {
+			return doFuncCall(condType.func)
+		} else if (condType.method !== null) {
+			return doMethodCall(condType.method)
+		} else {
+			return "{{ERROR: Unknown 'ConditionType'}}" // Unreachable!
+		}
+	}
+
+	def String doComparison(Comparison comp) {
+		return getValue(comp.valueLeft) + " " + comp.comp + " " + getValue(comp.valueRight)
 	}
 
 	def String doMathExpr(MathExpr expr) {
@@ -505,6 +556,18 @@ class ASELGenerator extends AbstractGenerator {
 		}
 
 		return result
+	}
+
+	def String doArrayAccess(ArrayAccess array) {
+		var result = "["
+
+		if (array.variable !== null) {
+			result += array.variable.name // Variable length
+		} else {
+			result += array.length // Fixed length
+		}
+
+		return result + "]"
 	}
 
 	def String getValue(VarValue value) {
@@ -519,9 +582,15 @@ class ASELGenerator extends AbstractGenerator {
 		} else if (value.value instanceof ValueString) {
 			return "\"" + (value.value as ValueString).string + "\""
 		} else if (!value.keyword.isNullOrEmpty) {
-			return value.keyword
+			return getKeyword(value.keyword)
 		} else if (!value.name.isNullOrEmpty) {
-			return value.name
+			var result = value.name
+
+			if (value.data !== null) {
+				result += doArrayAccess(value.data)
+			}
+
+			return result
 		} else {
 			return "{{ERROR: Unknown 'VarValue'}}" // Unreachable!
 		}
@@ -541,5 +610,25 @@ class ASELGenerator extends AbstractGenerator {
 		} else {
 			return "{{ERROR: Unknown 'VarValue' type}}" // Unreachable!
 		}
+	}
+
+	def String getKeyword(String keyword) {
+		if (keyword == "on" || keyword == "pushed") {
+			return "HIGH"
+		} else if (keyword == "off" || keyword == "released") {
+			return "LOW"
+		} else {
+			return "{{ERROR: Unknown 'KEYWORD'}}" // Unreachable!
+		}
+	}
+
+	def boolean isPinDefined(String name) {
+		for (x : resourceGlobal.allContents.toIterable.filter(InitPin)) {
+			if (x.name == name) {
+				return true
+			}
+		}
+
+		return false
 	}
 }
