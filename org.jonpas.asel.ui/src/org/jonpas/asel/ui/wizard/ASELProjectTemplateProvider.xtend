@@ -23,6 +23,8 @@ class ASELProjectTemplateProvider implements IProjectTemplateProvider {
 @ProjectTemplate(label="Empty", icon="project_template.png", description="<p><b>Empty</b></p>
 <p>This is an empty project for ASEL.</p>")
 final class EmptyProject {
+	val boards = text("Boards:", "lolin_d32", "Board IDs from https://platformio.org/boards (space-separated)")
+
 	override generateProjects(IProjectGenerator generator) {
 		generator.generate(new ProjectFactory => [
 			projectName = projectInfo.projectName
@@ -44,8 +46,29 @@ final class EmptyProject {
 				
 				# Loops forever
 				run {
-					
+				
 				}
+			''')
+			addFile('''Makefile''', '''
+				BOARDS = «boards»
+				
+				all:
+					platformio -f -c eclipse run
+				
+				upload:
+					platformio -f -c eclipse run --target upload
+				
+				clean:
+					platformio -f -c eclipse run --target clean
+				
+				update:
+					platformio -f -c eclipse update
+				
+				init:
+					platformio init --ide eclipse $(addprefix -b ,$(BOARDS))
+					@if ! grep -Fxq "[platformio]" platformio.ini; then \
+						echo -e "[platformio]\nsrc_dir = src-gen\n" >> platformio.ini; \
+					fi
 			''')
 		])
 	}
@@ -54,6 +77,7 @@ final class EmptyProject {
 @ProjectTemplate(label="LED", icon="project_template.png", description="<p><b>LED</b></p>
 <p>This is a parameterized LED enabler for ASEL. You can set a parameter to modify the content in the generated file.</p>")
 final class LEDProject {
+	val boards = text("Boards:", "lolin_d32", "Board IDs from https://platformio.org/boards (space-separated)")
 	val pin = text("LED Pin:", "5", "Pin of the LED for your board")
 
 	override generateProjects(IProjectGenerator generator) {
@@ -75,6 +99,27 @@ final class LEDProject {
 					out LED
 					LED = on
 				}
+			''')
+			addFile('''Makefile''', '''
+				BOARDS = «boards»
+				
+				all:
+					platformio -f -c eclipse run
+				
+				upload:
+					platformio -f -c eclipse run --target upload
+				
+				clean:
+					platformio -f -c eclipse run --target clean
+				
+				update:
+					platformio -f -c eclipse update
+				
+				init:
+					platformio init --ide eclipse $(addprefix -b ,$(BOARDS))
+					@if ! grep -Fxq "[platformio]" platformio.ini; then \
+						echo -e "[platformio]\nsrc_dir = src-gen\n" >> platformio.ini; \
+					fi
 			''')
 		])
 	}
