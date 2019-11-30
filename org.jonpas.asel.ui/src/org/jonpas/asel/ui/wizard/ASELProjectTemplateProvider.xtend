@@ -53,22 +53,25 @@ final class EmptyProject {
 				BOARDS = «boards»
 				
 				all:
-					platformio -f -c eclipse run
+					platformio -f run
 				
 				upload:
-					platformio -f -c eclipse run --target upload
+					platformio -f run --target upload
 				
 				clean:
-					platformio -f -c eclipse run --target clean
+					platformio -f run --target clean
 				
 				update:
-					platformio -f -c eclipse update
+					platformio -f update
 				
 				init:
-					platformio init --ide eclipse $(addprefix -b ,$(BOARDS))
+					platformio init $(addprefix -b ,$(BOARDS))
 					@if ! grep -Fxq "[platformio]" platformio.ini; then \
 						echo -e "[platformio]\nsrc_dir = src-gen\n" >> platformio.ini; \
 					fi
+			''')
+			addFile('''.gitignore''', '''
+				.pio
 			''')
 		])
 	}
@@ -104,22 +107,25 @@ final class LEDProject {
 				BOARDS = «boards»
 				
 				all:
-					platformio -f -c eclipse run
+					platformio -f run
 				
 				upload:
-					platformio -f -c eclipse run --target upload
+					platformio -f run --target upload
 				
 				clean:
-					platformio -f -c eclipse run --target clean
+					platformio -f run --target clean
 				
 				update:
-					platformio -f -c eclipse update
+					platformio -f update
 				
 				init:
-					platformio init --ide eclipse $(addprefix -b ,$(BOARDS))
+					platformio init $(addprefix -b ,$(BOARDS))
 					@if ! grep -Fxq "[platformio]" platformio.ini; then \
 						echo -e "[platformio]\nsrc_dir = src-gen\n" >> platformio.ini; \
 					fi
+			''')
+			addFile('''.gitignore''', '''
+				.pio
 			''')
 		])
 	}

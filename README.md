@@ -33,4 +33,13 @@ At this time, further manual configuration is required to build a project. For n
 
 Install any libraries using [PlatfromIO CLI](http://docs.platformio.org/en/latest/core.html#piocore).
 
-PlatformIO files are generated with `$ make init`, they may be added to `.gitignore` and regenerated as long as no manual changes are made to `platformio.ini`. All files generated with ASEL Project Wizard should however be version controlled.
+### Version Control
+
+All files generated with ASEL Project Wizard should be version controlled:
+- `src` folder (your code)
+- `Makefile`
+- `.gitignore`
+
+`platformio.ini` file generated with `$ make init` should also be version controlled if libraries are added or manual changes are inserted. Otherwise it may also be regenerated each time using `$ make init` again. All other generated source files are up to developer's discretion if he will use them.
+
+PlatformIO helper files (`.pio` folder) are already ignored if ASEL Project Wizard was used, otherwise they should be added manually.
