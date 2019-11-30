@@ -24,7 +24,7 @@ ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.
 
 ASEL Generator translates ASEL code into C++ code, oriented for use with PlatformIO (but not necessarily).
 
-At this time, further manual configuration is required to build a project. For now, `make` is used to ease performing required actions. ASEL Project Templates already generates a suitable `Makefile` with user-inputted board IDs.
+At this time, further manual configuration is required to build a project. For now, `make` is used to perform required actions. ASEL Project Wizard already generates a suitable `Makefile` with user-inputted board IDs.
 
 - `$ make init` to initialize the project
 - `$ make` to build
@@ -33,4 +33,4 @@ At this time, further manual configuration is required to build a project. For n
 
 Install any libraries using [PlatfromIO CLI](http://docs.platformio.org/en/latest/core.html#piocore).
 
-PlatformIO files are generated with `$ make init`, they may be added to `.gitignore` and regenerated as long as no manual changes are made to `platformio.ini`. All files generated with ASEL Project Templates should however be versione controlled.
+PlatformIO files are generated with `$ make init`, they may be added to `.gitignore` and regenerated as long as no manual changes are made to `platformio.ini`. All files generated with ASEL Project Wizard should however be version controlled.
