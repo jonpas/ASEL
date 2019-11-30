@@ -128,7 +128,7 @@ class ASELGenerator extends AbstractGenerator {
 		}
 		result += "}\n\n"
 
-		fsa.generateFile("main.c", result)
+		fsa.generateFile("main.cpp", result)
 	}
 
 	def String doRunPreProcRunCodes(EList<EObject> codes) {
@@ -320,6 +320,7 @@ class ASELGenerator extends AbstractGenerator {
 			PageElement Page(_page, {
 				{"STYLE", [](PageArgument& arg) {
 					return String(_style);
+				}},
 		'''
 
 		// Button to page handler links
