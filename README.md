@@ -61,8 +61,11 @@ PlatformIO helper files (`.pio` folder) are already ignored if ASEL Project Wiza
 
 ASEL Generator can be ran as a standalone program (runnable JAR file) on command line or included in other tools or IDEs.
 
-`$ java -jar ASELStandalone.jar <path-to-ASEL-source>`
+`ASELStandalone.jar` can be invoked directly with `java`, taking a path to an ASEL project as an argument. ASEL project must contain a `src` folder with a `main.asel` ASEL source file inside it!
 
-**Example:**
+`$ java -jar ASELStandalone.jar <path-to-ASEL-project>`
 
-`$ java -jar org.jonpas.asel/target/ASELStandalone.jar demos/asel.demo.base/src/main.asel`
+**Examples:**
+
+- `$ java -jar ASELStandalone.jar org.example.myasel`
+- `$ java -jar org.jonpas.asel/target/ASELStandalone.jar demos/asel.demo.base`
