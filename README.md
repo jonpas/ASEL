@@ -16,9 +16,22 @@ ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.
   - [Xtext](https://www.eclipse.org/Xtext/) IDE _(Plug-In)_
   - [Xtend](https://www.eclipse.org/xtend/) IDE _(Plug-In)_
 
+**Run Configurations:**
+- `Generate ASEL.mwe2` generates grammar, generators, stubs, wizards etc.
+- `Launch Runtime Eclipse` launches Runtime with all ASEL features enabled.
+- `ASELParsingTest` runs JUnit tests.
+- `Launch Standalone Generator` runs ASEL as a standalone program (without Eclipse).
+  - Uses `asel.demo.base` demo (`demos` folder) when launched from within Eclipse.
+  - _Used mainly for exporting._
+
+**External Tools Configurations:**
+- `Build Standalone` exports ASEL generator as a standalone program (runnable JAR file).
+  - Target: `org.jonpas.asel/target/ASELStandalone.jar`
+  - Run as: `java -jar ASELStandalone.jar <path-to-ASEL-source>` (eg. `main.asel`)
+  - _Uses Ant build script._
 
 
-## ASEL Project
+## ASEL Eclipse Project
 
 ### Building
 
@@ -43,3 +56,8 @@ All files generated with ASEL Project Wizard should be version controlled:
 `platformio.ini` file generated with `$ make init` should also be version controlled if libraries are added or manual changes are inserted. Otherwise it may also be regenerated each time using `$ make init` again. All other generated source files are up to developer's discretion if he will use them.
 
 PlatformIO helper files (`.pio` folder) are already ignored if ASEL Project Wizard was used, otherwise they should be added manually.
+
+
+## ASEL Standalone Project
+
+

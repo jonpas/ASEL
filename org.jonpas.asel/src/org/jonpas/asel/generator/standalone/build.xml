@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project org.jonpas.asel with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/../../../../../../.."/>
+    <property name="dir.jarfile" value="${dir.workspace}/org.jonpas.asel/target"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/ASELStandalone.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="org.jonpas.asel.generator.Main"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ org.eclipse.xtext_2.19.0.v20190902-0737.jar org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar org.eclipse.emf.ecore_2.19.0.v20190822-1451.jar org.eclipse.emf.common_2.16.0.v20190625-1131.jar org.antlr.runtime_3.2.0.v201101311130.jar com.google.inject_3.0.0.v201605172100.jar org.eclipse.emf.mwe.core_1.5.0.201906111547.jar org.apache.commons.cli_1.2.0.v201404270220.jar org.eclipse.emf.mwe2.runtime_2.11.0.201906111547.jar org.eclipse.emf.mwe.utils_1.5.0.201906111547.jar org.eclipse.xtext.util_2.19.0.v20190902-0737.jar com.google.guava_27.1.0.v20190517-1946.jar javax.inject_1.0.0.v20091030.jar org.eclipse.xtext.xbase_2.19.0.v20190902-0952.jar org.eclipse.xtext.common.types_2.19.0.v20190902-0952.jar org.eclipse.xtend.lib_2.19.0.v20190902-0728.jar org.eclipse.xtext.xbase.lib_2.19.0.v20190902-0728.jar org.eclipse.xtend.lib.macro_2.19.0.v20190902-0728.jar org.eclipse.equinox.common_3.10.500.v20190815-1535.jar org.eclipse.core.resources_3.13.500.v20190819-0800.jar org.eclipse.core.runtime_3.16.0.v20190823-1314.jar org.eclipse.osgi_3.15.0.v20190830-1434.jar org.eclipse.osgi.compatibility.state_1.1.600.v20190814-1451.jar org.eclipse.core.jobs_3.10.500.v20190620-1426.jar org.eclipse.equinox.registry_3.8.500.v20190714-1850.jar org.eclipse.equinox.preferences_3.7.500.v20190815-1535.jar org.eclipse.core.contenttype_3.7.400.v20190624-1144.jar org.eclipse.equinox.app_1.4.300.v20190815-1535.jar org.eclipse.xtext.xtext.generator_2.19.0.v20190902-0737.jar org.eclipse.emf.codegen.ecore_2.19.0.v20190822-1451.jar org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar org.eclipse.emf.mwe2.launch_2.11.0.201906111547.jar org.eclipse.emf.mwe2.language_2.11.0.201906111547.jar org.eclipse.emf.mwe2.lib_2.11.0.201906111547.jar org.objectweb.asm_7.1.0.v20190412-2143.jar org.apache.commons.logging_1.2.0.v20180409-1502.jar org.apache.log4j_1.2.15.v201012070815.jar com.ibm.icu_64.2.0.v20190507-1337.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.workspace}/org.jonpas.asel/bin"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtext_2.19.0.v20190902-0737.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.emf.ecore_2.19.0.v20190822-1451.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.emf.common_2.16.0.v20190625-1131.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.antlr.runtime_3.2.0.v201101311130.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="com.google.inject_3.0.0.v201605172100.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.mwe.core_1.5.0.201906111547.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.apache.commons.cli_1.2.0.v201404270220.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.mwe2.runtime_2.11.0.201906111547.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.mwe.utils_1.5.0.201906111547.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtext.util_2.19.0.v20190902-0737.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="com.google.guava_27.1.0.v20190517-1946.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="javax.inject_1.0.0.v20091030.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtext.xbase_2.19.0.v20190902-0952.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtext.common.types_2.19.0.v20190902-0952.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtend.lib_2.19.0.v20190902-0728.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtext.xbase.lib_2.19.0.v20190902-0728.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtend.lib.macro_2.19.0.v20190902-0728.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.equinox.common_3.10.500.v20190815-1535.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.core.resources_3.13.500.v20190819-0800.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.core.runtime_3.16.0.v20190823-1314.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.osgi_3.15.0.v20190830-1434.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.osgi.compatibility.state_1.1.600.v20190814-1451.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.core.jobs_3.10.500.v20190620-1426.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.equinox.registry_3.8.500.v20190714-1850.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.equinox.preferences_3.7.500.v20190815-1535.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.core.contenttype_3.7.400.v20190624-1144.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.eclipse.equinox.app_1.4.300.v20190815-1535.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.xtext.xtext.generator_2.19.0.v20190902-0737.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.codegen.ecore_2.19.0.v20190822-1451.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.mwe2.launch_2.11.0.201906111547.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.mwe2.language_2.11.0.201906111547.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.eclipse.emf.mwe2.lib_2.11.0.201906111547.jar"/>
+            <zipfileset dir="/home/jonpas/.eclipse/org.eclipse.platform_4.13.0_155965261_linux_gtk_x86_64/plugins" includes="org.objectweb.asm_7.1.0.v20190412-2143.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.apache.commons.logging_1.2.0.v20180409-1502.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="org.apache.log4j_1.2.15.v201012070815.jar"/>
+            <zipfileset dir="/usr/lib/eclipse/plugins" includes="com.ibm.icu_64.2.0.v20190507-1337.jar"/>
+        </jar>
+    </target>
+</project>

@@ -33,6 +33,9 @@ Workflow {
 			name = "org.jonpas.asel.ASEL"
 			fileExtensions = "asel"
 
+			generator = {
+				generateJavaMain = true
+			}
 			serializer = {
 				generateStub = false
 			}
