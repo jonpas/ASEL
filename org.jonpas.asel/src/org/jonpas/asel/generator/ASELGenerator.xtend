@@ -3,14 +3,16 @@
  */
 package org.jonpas.asel.generator
 
+import java.io.File
+import java.util.Scanner
+import org.eclipse.core.runtime.Path
+import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import java.io.File
-import java.util.Scanner
 import org.jonpas.asel.asel.Model
 import org.jonpas.asel.asel.Use
 import org.jonpas.asel.asel.RunCode
@@ -289,8 +291,37 @@ class ASELGenerator extends AbstractGenerator {
 	def String doInitWiFi(InitWiFi wifi) {
 		var result = ""
 
-		var file = wifi.eResource.URI.toFileString
-		var folder = file.substring(0, file.lastIndexOf('/') + 1)
+		var pageFileContents = ""
+		var styleFileContents = ""
+
+		val fileURI = wifi.eResource.URI
+		val file = fileURI.toFileString
+		if (file !== null) {
+			// Standalone project
+			val folder = file.substring(0, file.lastIndexOf('/') + 1)
+			val pageFile = new File(folder + wifi.pageFile)
+			val styleFile = new File(folder + wifi.styleFile)
+
+			if (wifi.pageFile != "" && pageFile.exists) {
+				pageFileContents = new Scanner(pageFile).useDelimiter("\\Z").next()
+			}
+			if (wifi.styleFile != "" && styleFile.exists) {
+				styleFileContents = new Scanner(styleFile).useDelimiter("\\Z").next()
+			}
+		} else {
+			// Eclipse project
+			val fileObj = ResourcesPlugin.workspace.root.getFile(new Path(fileURI.toPlatformString(true)))
+			val proj = fileObj.project
+			val pageFile = proj.getFile("src/" + wifi.pageFile)
+			val styleFile = proj.getFile("src/" + wifi.styleFile)
+
+			if (wifi.pageFile != "" && pageFile.exists) {
+				pageFileContents = new String(pageFile.contents.readAllBytes)
+			}
+			if (wifi.styleFile != "" && styleFile.exists) {
+				styleFileContents = new String(styleFile.contents.readAllBytes)
+			}
+		}
 
 		result += '''
 			#if defined(ARDUINO_ARCH_ESP8266)
@@ -300,19 +331,13 @@ class ASELGenerator extends AbstractGenerator {
 			#endif
 		'''
 
-		result += "\nstatic const char PROGMEM _page[] = R\"rawliteral(\n"
-		if (wifi.pageFile != "") {
-			result += new Scanner(new File(folder + wifi.pageFile)).useDelimiter("\\Z").next()
-		}
+		result += "\nstatic const char PROGMEM _page[] = R\"rawliteral(\n" + pageFileContents
 		result += '''
 			)rawliteral";
 
 			static const char PROGMEM _style[] = R"rawliteral(
 		'''
-		if (wifi.styleFile != "") {
-			result += new Scanner(new File(folder + wifi.styleFile)).useDelimiter("\\Z").next()
-		}
-		result += ")rawliteral\";\n\n"
+		result += styleFileContents + ")rawliteral\";\n\n"
 
 		// Page construct
 		result += '''

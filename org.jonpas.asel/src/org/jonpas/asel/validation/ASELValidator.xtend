@@ -3,8 +3,10 @@
  */
 package org.jonpas.asel.validation
 
-import org.eclipse.xtext.validation.Check
 import java.io.File
+import org.eclipse.core.runtime.Path
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.xtext.validation.Check
 import org.jonpas.asel.asel.AselPackage
 import org.jonpas.asel.asel.Init
 import org.jonpas.asel.asel.InitCode
@@ -53,21 +55,33 @@ class ASELValidator extends AbstractASELValidator {
 
 	@Check
 	def checkWiFiFilesExist(InitWiFi wifi) {
-		var file = wifi.eResource.URI.toFileString
-		var folder = file.substring(0, file.lastIndexOf('/') + 1)
+		var pageFileExists = false
+		var styleFileExists = false
 
-		var pageFile = new File(folder + wifi.pageFile)
-		var styleFile = new File(folder + wifi.styleFile)
+		val fileURI = wifi.eResource.URI
+		val file = fileURI.toFileString
+		if (file !== null) {
+			// Standalone project
+			val folder = file.substring(0, file.lastIndexOf('/') + 1)
+			pageFileExists = new File(folder + wifi.pageFile).exists
+			styleFileExists = new File(folder + wifi.styleFile).exists
+		} else {
+			// Eclipse project
+			val fileObj = ResourcesPlugin.workspace.root.getFile(new Path(fileURI.toPlatformString(true)))
+			val proj = fileObj.project
+			pageFileExists = proj.getFile("src/" + wifi.pageFile).exists
+			styleFileExists = proj.getFile("src/" + wifi.styleFile).exists
+		}
 
 		if (!wifi.pageFile.isNullOrEmpty) {
-			if (!pageFile.exists) {
+			if (!pageFileExists) {
 				error('Page file "' + wifi.pageFile + '" is missing', AselPackage.Literals.INIT_WI_FI__PAGE_FILE,
 					MISSING_WIFI_PAGE)
 			}
 		}
 
 		if (!wifi.styleFile.isNullOrEmpty) {
-			if (!styleFile.exists) {
+			if (!styleFileExists) {
 				error('Style file "' + wifi.styleFile + '" is missing', AselPackage.Literals.INIT_WI_FI__STYLE_FILE,
 					MISSING_WIFI_STYLE)
 			}
