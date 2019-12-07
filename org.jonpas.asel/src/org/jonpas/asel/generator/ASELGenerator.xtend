@@ -3,14 +3,14 @@
  */
 package org.jonpas.asel.generator
 
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.runtime.Path
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import java.io.File
+import java.util.Scanner
 import org.jonpas.asel.asel.Model
 import org.jonpas.asel.asel.Use
 import org.jonpas.asel.asel.RunCode
@@ -289,9 +289,8 @@ class ASELGenerator extends AbstractGenerator {
 	def String doInitWiFi(InitWiFi wifi) {
 		var result = ""
 
-		val platformString = wifi.eResource.URI.toPlatformString(true)
-		val myFile = ResourcesPlugin.workspace.root.getFile(new Path(platformString))
-		val proj = myFile.project
+		var file = wifi.eResource.URI.toFileString
+		var folder = file.substring(0, file.lastIndexOf('/') + 1)
 
 		result += '''
 			#if defined(ARDUINO_ARCH_ESP8266)
@@ -303,7 +302,7 @@ class ASELGenerator extends AbstractGenerator {
 
 		result += "\nstatic const char PROGMEM _page[] = R\"rawliteral(\n"
 		if (wifi.pageFile != "") {
-			result += new String(proj.getFile(wifi.pageFile).contents.readAllBytes)
+			result += new Scanner(new File(folder + wifi.pageFile)).useDelimiter("\\Z").next()
 		}
 		result += '''
 			)rawliteral";
@@ -311,7 +310,7 @@ class ASELGenerator extends AbstractGenerator {
 			static const char PROGMEM _style[] = R"rawliteral(
 		'''
 		if (wifi.styleFile != "") {
-			result += new String(proj.getFile(wifi.styleFile).contents.readAllBytes)
+			result += new Scanner(new File(folder + wifi.styleFile)).useDelimiter("\\Z").next()
 		}
 		result += ")rawliteral\";\n\n"
 

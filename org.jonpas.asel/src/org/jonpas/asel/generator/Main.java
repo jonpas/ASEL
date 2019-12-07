@@ -21,9 +21,11 @@ import org.jonpas.asel.ASELStandaloneSetup;
 
 public class Main {
 
+	public static String ASEL_SOURCE = "/src/main.asel";
+
 	public static void main(String[] args) {
 		if (args.length == 0) {
-			System.err.println("Aborting: no path to EMF resource provided!");
+			System.err.println("Aborting: no path to project folder provided!");
 			return;
 		}
 		Injector injector = new ASELStandaloneSetup().createInjectorAndDoEMFRegistration();
@@ -43,10 +45,10 @@ public class Main {
 	@Inject
 	private JavaIoFileSystemAccess fileAccess;
 
-	protected void runGenerator(String string) {
+	protected void runGenerator(String folder) {
 		// Load the resource
 		ResourceSet set = resourceSetProvider.get();
-		Resource resource = set.getResource(URI.createFileURI(string), true);
+		Resource resource = set.getResource(URI.createFileURI(folder + ASEL_SOURCE), true);
 
 		// Validate the resource
 		List<Issue> list = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
@@ -58,11 +60,12 @@ public class Main {
 		}
 
 		// Configure and start the generator
-		fileAccess.setOutputPath("src-gen/");
+		String output = folder + "/src-gen/";
+		fileAccess.setOutputPath(output);
 		GeneratorContext context = new GeneratorContext();
 		context.setCancelIndicator(CancelIndicator.NullImpl);
 		generator.generate(resource, fileAccess, context);
 
-		System.out.println("Code generation finished.");
+		System.out.println("Code generation finished: " + output);
 	}
 }

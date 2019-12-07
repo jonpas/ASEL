@@ -7,30 +7,30 @@ init {
 
 	int ledStatus
 
-	pagehandle detonate {
-		handle "detonate" {
+	pagehandle showcase {
+		handle "showcase" {
 			handle "test" {
 				ledStatus = LED
 				if ledStatus == off {
 					LED = on
 					raw"
-						return \"RESET\"
+						return \"SHOWCASE\"
 					"
 				} else {
 					LED = off
-					-> "DETONATE"
+					-> "SHOWCASE"
 				}
 			}
 		}
-		-> "DETONATE"
+		-> "SHOWCASE"
 	}
-	
+
 	pagehandle reset {
 		-> "RESET"
 	}
 
-	wifi "Remote Detonator" "remdettest" "" "" {
-		"DETONATE" -> detonate
+	wifi "Remote Detonator" "remdettest" "page.html" "style.css" {
+		"SHOWCASE" -> showcase
 		"RESET" -> reset
 	}
 

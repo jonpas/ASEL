@@ -22,12 +22,11 @@ ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.
 - `ASELParsingTest` runs JUnit tests.
 - `Launch Standalone Generator` runs ASEL as a standalone program (without Eclipse).
   - Uses `asel.demo.base` demo (`demos` folder) when launched from within Eclipse.
-  - _Used mainly for exporting._
+  - _Used for exporting._
 
 **External Tools Configurations:**
 - `Build Standalone` exports ASEL generator as a standalone program (runnable JAR file).
   - Target: `org.jonpas.asel/target/ASELStandalone.jar`
-  - Run as: `java -jar ASELStandalone.jar <path-to-ASEL-source>` (eg. `main.asel`)
   - _Uses Ant build script._
 
 
@@ -60,4 +59,10 @@ PlatformIO helper files (`.pio` folder) are already ignored if ASEL Project Wiza
 
 ## ASEL Standalone Project
 
+ASEL Generator can be ran as a standalone program (runnable JAR file) on command line or included in other tools or IDEs.
 
+`$ java -jar ASELStandalone.jar <path-to-ASEL-source>`
+
+**Example:**
+
+`$ java -jar org.jonpas.asel/target/ASELStandalone.jar demos/asel.demo.base/src/main.asel`
