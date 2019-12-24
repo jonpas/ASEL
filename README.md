@@ -8,6 +8,10 @@ ASEL is a language that translates to Arduino Language notation compatible with 
 
 ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.eclipse.org/Xtext/) for syntax and [Xtend](https://www.eclipse.org/xtend/) for semantics. Additionally leveraging Eclipse's tools, comes with IDE support.
 
+**Airsoft Explosive _Modelling_ Language [ASEmL]:**
+
+ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamodel in [Eclipse Modelling Framework (EMF)](https://www.eclipse.org/modeling/emf/).
+
 
 ### Setup
 
@@ -18,7 +22,7 @@ ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.
 
 **Run Configurations:**
 - `Generate ASEL.mwe2` generates grammar, generators, stubs, wizards etc.
-- `Launch Runtime Eclipse` launches Runtime with all ASEL features enabled.
+- `Launch Runtime Eclipse` launches Runtime with all ASEL features enabled (including ASEmL if generated).
 - `ASELParsingTest` runs JUnit tests.
 - `Launch Standalone Generator` runs ASEL as a standalone program (without Eclipse).
   - Uses `asel.demo.base` demo (`demos` folder) when launched from within Eclipse.
@@ -28,6 +32,10 @@ ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.
 - `Build Standalone` exports ASEL generator as a standalone program (runnable JAR file).
   - Target: `org.jonpas.asel/target/ASELStandalone.jar`
   - _Uses Ant build script._
+
+**Modelling Language Generation _`org.jonpas.aseml`_:**
+- Edit metamodel with class diagram (`model/ASEmL.aird -> ASEmL.ecore -> ASEmL -> ASEmL`) or Ecore (`model/ASEmL.ecore`).
+- Open `model/ASEmL.genmodel` and right-click on root node to Generate Code.
 
 
 ## ASEL Eclipse Project
@@ -69,3 +77,10 @@ ASEL Generator can be ran as a standalone program (runnable JAR file) on command
 
 - `$ java -jar ASELStandalone.jar org.example.myasel`
 - `$ java -jar org.jonpas.asel/target/ASELStandalone.jar demos/asel.demo.base`
+
+
+## ASEmL Project
+
+Create an empty project and add ASEmL Model to it using the generated wizard (`New -> Other... -> ASEmL Model`).
+
+Right-click and select `Validate` to validate the created model.

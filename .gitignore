@@ -75,3 +75,10 @@ src-gen
 xtend-gen
 plugin.xml_gen
 .antlr-generator-*.jar
+
+
+## EMF
+
+# Generated Code
+org.jonpas.aseml.edit
+org.jonpas.aseml.editor

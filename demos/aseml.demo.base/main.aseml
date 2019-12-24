@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ASEmL:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ASEmL="http://www.example.org/ASEmL">
+  <use name="website"/>
+</ASEmL:Model>
