@@ -10,7 +10,7 @@ ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.
 
 **Airsoft Explosive _Modelling_ Language [ASEmL]:**
 
-ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamodel in [Eclipse Modelling Framework (EMF)](https://www.eclipse.org/modeling/emf/).
+ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamodel in [Eclipse Modeling Framework (EMF)](https://www.eclipse.org/modeling/emf/). It is an improved version of the Xtext-generated metamodel. May once be used in place of the generated one, however currently it is kept separate for experimental purposes.
 
 
 ### Setup
@@ -19,6 +19,7 @@ ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamo
 - [Eclipse](https://www.eclipse.org/) _(JRE/JDK **11**)_
   - [Xtext](https://www.eclipse.org/Xtext/) IDE _(Plug-In)_
   - [Xtend](https://www.eclipse.org/xtend/) IDE _(Plug-In)_
+  - [Eclipse Modeling Framework (EMF)](https://www.eclipse.org/modeling/emf/) _(Plug-Ins)_ for ASEmL
 
 **Run Configurations:**
 - `Generate ASEL.mwe2` generates grammar, generators, stubs, wizards etc.
