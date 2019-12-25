@@ -12,5 +12,6 @@ Export-Package: org.jonpas.ASEmL,
  org.jonpas.ASEmL.impl,
  org.jonpas.ASEmL.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.jonpas.aseml;visibility:=reexport,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy

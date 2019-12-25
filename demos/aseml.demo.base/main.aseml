@@ -1,4 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ASEmL:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ASEmL="http://www.example.org/ASEmL">
+<ASEmL:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ASEmL="http://www.jonpas.org/ASEmL">
   <use name="website"/>
+  <init>
+    <code>
+      <pin name="LED" ledBuiltin="true"/>
+    </code>
+    <code>
+      <variable type="INT" name="ledStatus"/>
+    </code>
+    <code>
+      <pageHandle name="showcase">
+        <code>
+          <arg name="showcase">
+            <code>
+              <code>
+                <any>
+                  <logical>
+                    <if>
+                      <cond>
+                        <type>
+                          <comp>
+                            <valueLeft variable="//@init/@code.1/@variable"/>
+                            <valueRight>
+                              <valueKeyword value="OFF"/>
+                            </valueRight>
+                          </comp>
+                        </type>
+                      </cond>
+                      <else>
+                        <code>
+                          <variable pin="//@init/@code.0/@pin">
+                            <value>
+                              <value>
+                                <valueKeyword value="OFF"/>
+                              </value>
+                            </value>
+                          </variable>
+                          <return name="SHOWCASE"/>
+                        </code>
+                      </else>
+                      <code>
+                        <variable pin="//@init/@code.0/@pin">
+                          <value>
+                            <value>
+                              <valueKeyword value="ON"/>
+                            </value>
+                          </value>
+                        </variable>
+                      </code>
+                      <preproc>
+                        <raw raw="return \&quot;SHOWCASE\&quot;"/>
+                      </preproc>
+                    </if>
+                  </logical>
+                </any>
+              </code>
+            </code>
+          </arg>
+          <code>
+            <return name="SHOWCASE"/>
+          </code>
+        </code>
+      </pageHandle>
+    </code>
+    <code>
+      <wifi ssid="page.html" password="remdettest" pageFile="Remote Detonator" styleFile="style.css">
+        <buttonLinks button="SHOWCASE" name="//@init/@code.2/@pageHandle"/>
+      </wifi>
+    </code>
+  </init>
+  <run>
+    <code wifi="true"/>
+  </run>
 </ASEmL:Model>

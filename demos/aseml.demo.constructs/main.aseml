@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ASEmL:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ASEmL="http://www.jonpas.org/ASEmL">
+  <init>
+    <code>
+      <variable name="b"/>
+    </code>
+    <code>
+      <class name="c" class="ClassX"/>
+    </code>
+    <code>
+      <variable type="INT" name="x"/>
+    </code>
+  </init>
+  <prepare>
+    <code>
+      <variable sign="NEG" variable="//@init/@code.0/@variable">
+        <value>
+          <value>
+            <valueBool value="true"/>
+          </value>
+        </value>
+      </variable>
+    </code>
+    <code>
+      <any>
+        <method method="doX" class="//@init/@code.1/@class"/>
+      </any>
+    </code>
+    <preproc>
+      <ifdef>
+        <cond>
+          <type>
+            <value variable="//@init/@code.0/@variable"/>
+          </type>
+        </cond>
+        <code>
+          <any>
+            <func name="delay">
+              <param>
+                <value>
+                  <valueInt value="100"/>
+                </value>
+              </param>
+            </func>
+          </any>
+        </code>
+      </ifdef>
+    </preproc>
+  </prepare>
+  <run>
+    <code>
+      <any>
+        <loop>
+          <for variable="i" to="5">
+            <code>
+              <variable operator="ADD" variable="//@init/@code.2/@variable">
+                <value>
+                  <value>
+                    <valueInt value="1"/>
+                  </value>
+                </value>
+              </variable>
+            </code>
+          </for>
+        </loop>
+      </any>
+    </code>
+    <code>
+      <any>
+        <loop>
+          <while>
+            <cond>
+              <type>
+                <comp>
+                  <valueLeft variable="//@init/@code.2/@variable"/>
+                  <valueRight variable="//@init/@code.2/@variable"/>
+                </comp>
+              </type>
+            </cond>
+          </while>
+        </loop>
+      </any>
+    </code>
+  </run>
+</ASEmL:Model>

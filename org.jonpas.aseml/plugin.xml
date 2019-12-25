@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ASEmL -->
       <package
-            uri="http://www.example.org/ASEmL"
+            uri="http://www.jonpas.org/ASEmL"
             class="org.jonpas.ASEmL.ASEmLPackage"
             genModel="model/ASEmL.genmodel"/>
    </extension>

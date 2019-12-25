@@ -10,11 +10,291 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="ASEmL" basePackage="org.jonpas" disposableProviderFactory="true"
       ecorePackage="ASEmL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//PinMode">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//PinMode/OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//PinMode/IN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//Keyword">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Keyword/PUSHED"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Keyword/RELEASED"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Keyword/ON"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Keyword/OFF"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//VariableType">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/BOOL"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/INT"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/LONG"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/CHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//VariableType/STRING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//Sign">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Sign/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Sign/NEG"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Sign/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//Sign/SUB"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//LogicalOp">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//LogicalOp/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//LogicalOp/AND"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//CompareOp">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//CompareOp/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//CompareOp/NOT_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//CompareOp/LESS"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//CompareOp/MORE"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//CompareOp/LESS_OR_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//CompareOp/MORE_OR_EQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//MathOp">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//MathOp/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//MathOp/SUB"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//MathOp/DIV"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//MathOp/MUL"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//MathOp/POW"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASEmL.ecore#//AssignOp">
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//AssignOp/SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//AssignOp/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//AssignOp/SUB"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//AssignOp/DIV"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//AssignOp/MUL"/>
+      <genEnumLiterals ecoreEnumLiteral="ASEmL.ecore#//AssignOp/POW"/>
+    </genEnums>
     <genClasses ecoreClass="ASEmL.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Model/use"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Model/init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Model/prepare"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Model/run"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Init">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Init/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Init/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Prepare">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Prepare/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Prepare/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Run">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Run/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Run/preproc"/>
     </genClasses>
     <genClasses ecoreClass="ASEmL.ecore#//Use">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//Use/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitCode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitCode/pin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitCode/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitCode/class"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitCode/pageHandle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitCode/wifi"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitCode/any"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//RunCode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//RunCode/pin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//RunCode/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//RunCode/wifi"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//RunCode/return"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//RunCode/any"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//AnyCode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//AnyCode/func"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//AnyCode/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//AnyCode/logical"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//AnyCode/loop"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitPin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitPin/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitPin/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitPin/ledBuiltin"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitVar">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitVar/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitVar/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitVar/single"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitVar/array"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitSingle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitSingle/sign"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitSingle/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitArray">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitArray/data"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitArray/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitClass/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitClass/class"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitClass/param"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//PageHandler">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//PageHandler/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PageHandler/code"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//PageHandlerCode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PageHandlerCode/arg"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PageHandlerCode/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PageHandlerCode/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//HandleArg">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//HandleArg/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//HandleArg/code"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Return">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//Return/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//InitWiFi">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitWiFi/ssid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitWiFi/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitWiFi/pageFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//InitWiFi/styleFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//InitWiFi/buttonLinks"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//WiFiLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//WiFiLink/button"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//WiFiLink/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ModePin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ModePin/mode"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//ModePin/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//VarAssign">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarAssign/arrayLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//VarAssign/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//VarAssign/sign"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarAssign/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarAssign/variable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarAssign/pin"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//FuncCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//FuncCall/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//FuncCall/param"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//MethodCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//MethodCall/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//MethodCall/param"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//MethodCall/class"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//PreProcInit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PreProcInit/raw"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PreProcInit/ifdef"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//PreProcRun">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PreProcRun/raw"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//PreProcRun/ifdef"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Raw">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//Raw/raw"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//IfdefInit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//IfdefInit/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//IfdefInit/code"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//IfdefRun">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//IfdefRun/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//IfdefRun/code"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Param">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Param/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Param/func"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Param/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Param/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Logical">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Logical/if"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//LogicalIf">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalIf/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalIf/else"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalIf/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalIf/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//LogicalElse">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalElse/nestedCond"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalElse/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LogicalElse/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Loop">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Loop/for"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Loop/while"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//LoopFor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//LoopFor/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//LoopFor/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//LoopFor/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//LoopFor/toEquals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopFor/fromVar"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopFor/toVar"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopFor/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopFor/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//LoopWhile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopWhile/cond"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopWhile/code"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//LoopWhile/preproc"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Condition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//Condition/negate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Condition/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Condition/subCond"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//SubCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//SubCondition/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//SubCondition/negate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//SubCondition/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ConditionType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//ConditionType/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//ConditionType/comp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//ConditionType/func"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//ConditionType/method"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//Comparison">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Comparison/valueLeft"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//Comparison/comp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//Comparison/valueRight"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//MathExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//MathExpr/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//MathExpr/subExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//MathSubExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//MathSubExpr/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//MathSubExpr/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//VarValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/data"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/pin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/variable"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/valueKeyword"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/valueBool"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/valueInt"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/valueFloat"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/valueChar"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//VarValue/valueString"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ValueBool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ValueBool/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ValueInt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ValueInt/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ValueFloat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ValueFloat/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ValueChar">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ValueChar/char"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ValueString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ValueString/string"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ArrayAccess">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ArrayAccess/length"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASEmL.ecore#//ArrayAccess/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="ASEmL.ecore#//ValueKeyword">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASEmL.ecore#//ValueKeyword/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

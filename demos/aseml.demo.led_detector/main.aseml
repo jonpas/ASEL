@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ASEmL:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ASEmL="http://www.jonpas.org/ASEmL">
+  <init>
+    <code xsi:type="ASEmL:InitCode">
+      <pin name="LED" value="16"/>
+    </code>
+    <code xsi:type="ASEmL:InitCode">
+      <pin name="BUTTON"/>
+    </code>
+    <code xsi:type="ASEmL:InitCode">
+      <variable type="LONG" name="buttonState"/>
+    </code>
+    <code xsi:type="ASEmL:InitCode">
+      <variable type="LONG" name="lastButtonState"/>
+    </code>
+    <code xsi:type="ASEmL:InitCode">
+      <variable type="LONG" name="delayOn"/>
+    </code>
+    <code xsi:type="ASEmL:InitCode">
+      <variable type="LONG" name="delayOff"/>
+    </code>
+  </init>
+  <prepare>
+    <code xsi:type="ASEmL:RunCode">
+      <pin name="//@init/@code.0/@pin"/>
+    </code>
+    <code xsi:type="ASEmL:RunCode">
+      <pin mode="IN" name="//@init/@code.1/@pin"/>
+    </code>
+    <code xsi:type="ASEmL:RunCode">
+      <any>
+        <func name="randomSeed">
+          <param>
+            <func name="analogRead">
+              <param>
+                <value>
+                  <valueInt/>
+                </value>
+              </param>
+            </func>
+          </param>
+        </func>
+      </any>
+    </code>
+  </prepare>
+  <run>
+    <code xsi:type="ASEmL:RunCode">
+      <variable variable="//@init/@code.2/@variable">
+        <value>
+          <value pin="//@init/@code.1/@pin"/>
+        </value>
+      </variable>
+    </code>
+    <code xsi:type="ASEmL:RunCode">
+      <any>
+        <logical>
+          <if>
+            <cond>
+              <type>
+                <comp comp="NOT_EQUALS">
+                  <valueLeft variable="//@init/@code.2/@variable"/>
+                  <valueRight variable="//@init/@code.3/@variable"/>
+                </comp>
+              </type>
+            </cond>
+            <code xsi:type="ASEmL:RunCode">
+              <any>
+                <logical>
+                  <if>
+                    <cond>
+                      <type>
+                        <comp>
+                          <valueLeft variable="//@init/@code.2/@variable"/>
+                          <valueRight>
+                            <valueKeyword/>
+                          </valueRight>
+                        </comp>
+                      </type>
+                    </cond>
+                    <code xsi:type="ASEmL:RunCode">
+                      <variable pin="//@init/@code.0/@pin">
+                        <value>
+                          <value>
+                            <valueKeyword value="ON"/>
+                          </value>
+                        </value>
+                      </variable>
+                    </code>
+                    <else>
+                      <code xsi:type="ASEmL:RunCode">
+                        <variable pin="//@init/@code.0/@pin">
+                          <value>
+                            <value>
+                              <valueKeyword value="OFF"/>
+                            </value>
+                          </value>
+                        </variable>
+                      </code>
+                    </else>
+                  </if>
+                </logical>
+              </any>
+            </code>
+            <else>
+              <code xsi:type="ASEmL:RunCode">
+                <variable variable="//@init/@code.4/@variable">
+                  <value>
+                    <func name="random">
+                      <param>
+                        <value>
+                          <valueInt value="100"/>
+                        </value>
+                      </param>
+                      <param>
+                        <value>
+                          <valueInt value="1000"/>
+                        </value>
+                      </param>
+                    </func>
+                  </value>
+                </variable>
+              </code>
+              <code xsi:type="ASEmL:RunCode">
+                <variable variable="//@init/@code.5/@variable">
+                  <value>
+                    <func name="random">
+                      <param>
+                        <value>
+                          <valueInt value="100"/>
+                        </value>
+                      </param>
+                      <param>
+                        <value>
+                          <valueInt value="1000"/>
+                        </value>
+                      </param>
+                    </func>
+                  </value>
+                </variable>
+              </code>
+              <code xsi:type="ASEmL:RunCode">
+                <variable pin="//@init/@code.0/@pin">
+                  <value>
+                    <value>
+                      <valueKeyword value="ON"/>
+                    </value>
+                  </value>
+                </variable>
+              </code>
+              <code xsi:type="ASEmL:RunCode">
+                <any>
+                  <func name="delay">
+                    <param>
+                      <value variable="//@init/@code.4/@variable"/>
+                    </param>
+                  </func>
+                </any>
+              </code>
+              <code xsi:type="ASEmL:RunCode">
+                <variable pin="//@init/@code.0/@pin">
+                  <value>
+                    <value>
+                      <valueKeyword value="OFF"/>
+                    </value>
+                  </value>
+                </variable>
+              </code>
+              <code xsi:type="ASEmL:RunCode">
+                <any>
+                  <func name="delay">
+                    <param>
+                      <value variable="//@init/@code.5/@variable"/>
+                    </param>
+                  </func>
+                </any>
+              </code>
+            </else>
+          </if>
+        </logical>
+      </any>
+    </code>
+    <code xsi:type="ASEmL:RunCode">
+      <any>
+        <func name="delay">
+          <param>
+            <value>
+              <valueInt value="50"/>
+            </value>
+          </param>
+        </func>
+      </any>
+    </code>
+    <code xsi:type="ASEmL:RunCode">
+      <variable variable="//@init/@code.3/@variable">
+        <value>
+          <value variable="//@init/@code.2/@variable"/>
+        </value>
+      </variable>
+    </code>
+  </run>
+</ASEmL:Model>

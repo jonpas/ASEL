@@ -36,6 +36,7 @@ ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamo
 **Modelling Language Generation _`org.jonpas.aseml`_:**
 - Edit metamodel with class diagram (`model/ASEmL.aird -> ASEmL.ecore -> ASEmL -> ASEmL`) or Ecore (`model/ASEmL.ecore`).
 - Open `model/ASEmL.genmodel` and right-click on root node to Generate Code.
+  - _Delete `src-gen` folder in `org.jonpas.aseml` and `org.jonpas.aseml.edit` projects when renaming or deleting items!_
 
 
 ## ASEL Eclipse Project
