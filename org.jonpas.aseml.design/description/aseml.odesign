@@ -1,17 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="ASEmL" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="ASEmL" version="12.0.0.2017041100">
   <ownedViewpoints name="ASEmL" modelFileExtension="aseml">
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" name="ASEmL Sequence" domainClass="Model" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ASEmL Diagram" domainClass="ASEmL::Model" enablePopupBars="true">
       <metamodel href="http://www.jonpas.org/ASEmL#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Use" semanticCandidatesExpression="feature:use" domainClass="Use">
+        <nodeMappings name="Use" semanticCandidatesExpression="feature:use" domainClass="ASEmL::Use">
           <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Init" semanticCandidatesExpression="feature:init" domainClass="ASEmL::Init">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="init" labelPosition="node" resizeKind="NSEW" width="10" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
+        <nodeMappings name="Prepare" semanticCandidatesExpression="feature:prepare" domainClass="ASEmL::Prepare">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="prepare" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="InitCode" domainClass="ASEmL::InitCode">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="init code" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="PreProcRun" domainClass="ASEmL::PreProcRun">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="preprocessor run" labelPosition="node" resizeKind="NSEW" width="20" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ToInitCode" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Init']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitCode']" targetFinderExpression="feature:code">
+          <style sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ToRunCode" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='Run'] //@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Prepare']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='RunCode']" targetFinderExpression="feature:code">
+          <style sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ToPreProcInit" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Init']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='PreProcInit']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ToPreProcRun" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='Run'] //@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Prepare']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='PreProcRun']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
       </defaultLayer>
+      <nodeMappings name="PreProcInit" domainClass="ASEmL::PreProcInit">
+        <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="preprocessor init" labelPosition="node" resizeKind="NSEW" width="20" height="3">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="RunCode" domainClass="ASEmL::RunCode">
+        <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="run code" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="Run" semanticCandidatesExpression="feature:run" domainClass="ASEmL::Run">
+        <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="run" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </nodeMappings>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.jonpas.aseml.design.Services"/>
   </ownedViewpoints>
