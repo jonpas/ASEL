@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ASEmL="http://www.jonpas.org/ASEmL" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_b5TUsDTTEeqTJew7PS2kvg" selectedViews="_eAQaIDTTEeqTJew7PS2kvg" version="14.3.0.201909031200">
+    <semanticResources>main.aseml</semanticResources>
+    <semanticResources>src-gen/main.asel</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_eAQaIDTTEeqTJew7PS2kvg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ubl7FDTVEeqTJew7PS2kvg" name="ASEmL Sequence" repPath="#_Ubks8DTVEeqTJew7PS2kvg" changeId="30c89b39-8152-4536-bac7-4405e0389480">
+        <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Sequence']"/>
+        <target xmi:type="ASEmL:Model" href="main.aseml#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <sequence:SequenceDDiagram uid="_Ubks8DTVEeqTJew7PS2kvg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_UblUADTVEeqTJew7PS2kvg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_UblUATTVEeqTJew7PS2kvg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_UbmiIDTVEeqTJew7PS2kvg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_UbmiITTVEeqTJew7PS2kvg" type="Sirius" element="_Ubks8DTVEeqTJew7PS2kvg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_fulSQDTVEeqTJew7PS2kvg" type="2001" element="_fubhQDTVEeqTJew7PS2kvg">
+          <children xmi:type="notation:Node" xmi:id="_fulSQzTVEeqTJew7PS2kvg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_fulSRDTVEeqTJew7PS2kvg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1m0J0DTVEeqTJew7PS2kvg" type="3003" element="_1letETTVEeqTJew7PS2kvg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_1m0J0TTVEeqTJew7PS2kvg" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1m0J0jTVEeqTJew7PS2kvg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_fulSQTTVEeqTJew7PS2kvg" fontColor="5237244" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fulSQjTVEeqTJew7PS2kvg" width="100" height="30"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_UbmiIjTVEeqTJew7PS2kvg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_fubhQDTVEeqTJew7PS2kvg" name="website" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:Use" href="main.aseml#//@use.0"/>
+      <semanticElements xmi:type="ASEmL:Use" href="main.aseml#//@use.0"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_1letETTVEeqTJew7PS2kvg" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Sequence']/@defaultLayer/@nodeMappings[name='Use']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_2:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Sequence']/@defaultLayer/@nodeMappings[name='Use']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Sequence']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Ubks8TTVEeqTJew7PS2kvg"/>
+    <activatedLayers xmi:type="description_2:Layer" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Sequence']/@defaultLayer"/>
+    <target xmi:type="ASEmL:Model" href="main.aseml#/"/>
+  </sequence:SequenceDDiagram>
+</xmi:XMI>

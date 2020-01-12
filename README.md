@@ -8,9 +8,9 @@ ASEL is a language that translates to Arduino Language notation compatible with 
 
 ASEL is created using [Eclipse](https://www.eclipse.org/)'s [Xtext](https://www.eclipse.org/Xtext/) for syntax and [Xtend](https://www.eclipse.org/xtend/) for semantics. Additionally leveraging Eclipse's tools, comes with IDE support.
 
-**Airsoft Explosive _Modelling_ Language [ASEmL]:**
+**Airsoft Explosive _Modeling_ Language [ASEmL]:**
 
-ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamodel in [Eclipse Modeling Framework (EMF)](https://www.eclipse.org/modeling/emf/). It is an improved version of the Xtext-generated metamodel. May once be used in place of the generated one, however currently it is kept separate for experimental purposes.
+ASEmL is a visual (modeling) sub-language of ASEL, described as an Ecore metamodel in [Eclipse Modeling Framework (EMF)](https://www.eclipse.org/modeling/emf/). It is an improved version of the Xtext-generated metamodel. May once be used in place of the generated one, however currently it is kept separate for experimental purposes.
 
 
 ### Setup
@@ -34,10 +34,18 @@ ASEmL is a visual (modelling) sub-language of ASEL, described as an Ecore metamo
   - Target: `org.jonpas.asel/target/ASELStandalone.jar`
   - _Uses Ant build script._
 
-**Modelling Language Generation _`org.jonpas.aseml`_:**
+**Modeling Language Generation _`org.jonpas.aseml`_:**
 - Edit metamodel with class diagram (`model/ASEmL.aird -> ASEmL.ecore -> ASEmL -> ASEmL`) or Ecore (`model/ASEmL.ecore`).
 - Open `model/ASEmL.genmodel` and right-click on root node to Generate Code.
   - _Delete `src-gen` folder in `org.jonpas.aseml` and `org.jonpas.aseml.edit` projects when renaming or deleting items!_
+
+**Obeo Graphical Modeling Workbench _`org.jonpas.aseml.design`_:**
+- Develop in new Eclipse instance with EMF Ecore metamodel plugin loaded.
+- Edit ASEmL project's model with created representation (`representations.aird -> [ASEmL Sequence]`).
+
+**Acceleo Code Generation _`org.jonpas.aseml.acceleo`_:**
+- Develop in new Eclipse instance with EMF Ecore metamodel plugin loaded.
+- Generate ASEmL project's code with Run Configurations.
 
 
 ## ASEL Eclipse Project

@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.jonpas.org/ASEmL')]
+
+
+[template public generateElement(model : Model)]
+[comment @main/]
+[file ('main.asel', false, 'UTF-8')]
+	[for (use: Use | model.use) separator('\n')]
+	[/for]
+[/file]
+[/template]
