@@ -1,11 +1,19 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.jonpas.org/ASEmL')]
 
+[import org::jonpas::aseml::acceleo::main::generateCode /]
 
-[template public generateElement(model : Model)]
+[template public generateElement(model : Model)
+	post (trim())
+	{
+		extension : String = 'asel';
+	}]
 [comment @main/]
-[file ('main.asel', false, 'UTF-8')]
+[file ('main.' + extension, false, 'UTF-8')]
 	[for (use: Use | model.use) separator('\n')]
+		use [use.name/]
 	[/for]
+
+	[generateInit(model._init) /]
 [/file]
 [/template]

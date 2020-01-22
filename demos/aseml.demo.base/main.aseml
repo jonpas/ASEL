@@ -64,7 +64,7 @@
       </pageHandle>
     </code>
     <code>
-      <wifi ssid="page.html" password="remdettest" pageFile="Remote Detonator" styleFile="style.css">
+      <wifi ssid="Remote Detonator" password="remdettest" pageFile="" styleFile="">
         <buttonLinks button="SHOWCASE" name="//@init/@code.2/@pageHandle"/>
       </wifi>
     </code>

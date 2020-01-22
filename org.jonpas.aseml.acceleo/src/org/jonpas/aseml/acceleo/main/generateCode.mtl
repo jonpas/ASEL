@@ -1,0 +1,44 @@
+[comment encoding = UTF-8 /]
+[module generateCode('http://www.jonpas.org/ASEmL')]
+
+[template public generateInit(_init : Init)
+	post (trim())]
+init {
+	[for (code: InitCode | _init.code) separator('\n')]
+		[generateInitPin(code) /]
+		[generatePageHandler(code) /]
+		[generateInitWiFi(code) /]
+	[/for]
+}
+[/template]
+
+[template public generateInitPin(code : InitCode)
+	? (code.pin <> null)
+	post (trim())]
+pin [code.pin.name/] = [code.pin.value/]
+[/template]
+
+[template public generatePageHandler(code : InitCode)
+	? (code.pageHandle <> null)
+	post (trim())]
+pagehandle [code.pageHandle.name/] {
+}
+[/template]
+
+[template public generateInitWiFi(code : InitCode)
+	? (code.wifi <> null)
+	post (trim())]
+[if (isValidWiFi(code.wifi))]
+	wifi "[code.wifi.ssid/]" "[code.wifi.password/]" "[code.wifi.pageFile/]" "[code.wifi.styleFile/]" {
+	[for (buttonLink : WiFiLink | code.wifi.buttonLinks) separator('\n')]
+		['"' + buttonLink.button + '" -> ' + buttonLink.button.toLowerCase() /]
+	[/for]
+	}
+[else]
+	# Invalid WiFi (missing SSID or password)
+[/if]
+[/template]
+
+[query public isValidWiFi(wifi: InitWiFi) : Boolean =
+	wifi.ssid <> null and wifi.password <> null
+/]
