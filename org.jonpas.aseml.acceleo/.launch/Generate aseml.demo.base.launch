@@ -4,7 +4,7 @@
     <stringAttribute key="org.eclipse.acceleo.ide.ui.ARGUMENTS" value=""/>
     <booleanAttribute key="org.eclipse.acceleo.ide.ui.COMPUTE_PROFILING" value="false"/>
     <booleanAttribute key="org.eclipse.acceleo.ide.ui.COMPUTE_TRACEABILITY" value="false"/>
-    <stringAttribute key="org.eclipse.acceleo.ide.ui.LAUNCHING_STRATEGY_DESCRIPTION" value="Java Application"/>
+    <stringAttribute key="org.eclipse.acceleo.ide.ui.LAUNCHING_STRATEGY_DESCRIPTION" value="Acceleo Plug-in Application"/>
     <stringAttribute key="org.eclipse.acceleo.ide.ui.MODEL_PATH" value="/aseml.demo.base/main.aseml"/>
     <stringAttribute key="org.eclipse.acceleo.ide.ui.TARGET_PATH" value="/aseml.demo.base/src-gen"/>
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">

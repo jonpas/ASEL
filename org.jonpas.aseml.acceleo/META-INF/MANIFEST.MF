@@ -21,4 +21,5 @@ Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: org.jonpas.aseml.acceleo.main
 Automatic-Module-Name: org.jonpas.aseml.acceleo
+Bundle-ClassPath: bin/
 
