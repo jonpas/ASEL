@@ -13,7 +13,7 @@
         <description xmi:type="description_2:TreeDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Tree']"/>
         <target xmi:type="ASEmL:Model" href="main.aseml#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5dkhgTTsEeqVBMJhRRVLrg" name="ASEmL Diagram" repPath="#_5dheMDTsEeqVBMJhRRVLrg" changeId="c07ea137-2c75-416f-b5dd-4a090367560f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5dkhgTTsEeqVBMJhRRVLrg" name="ASEmL Diagram" repPath="#_5dheMDTsEeqVBMJhRRVLrg" changeId="1713f63d-84cd-4f7e-bb7d-de406cc33ca5">
         <description xmi:type="description_3:DiagramDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']"/>
         <target xmi:type="ASEmL:Model" href="main.aseml#/"/>
       </ownedRepresentationDescriptors>
@@ -707,7 +707,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5dnk0jTsEeqVBMJhRRVLrg"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_5dlIlDTsEeqVBMJhRRVLrg" fontName="Roboto" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5dlIlTTsEeqVBMJhRRVLrg" width="100" height="30"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5dlIlTTsEeqVBMJhRRVLrg" x="12" width="100" height="30"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_5dlvojTsEeqVBMJhRRVLrg" type="2001" element="_5djTYDTsEeqVBMJhRRVLrg">
           <children xmi:type="notation:Node" xmi:id="_5dmWsDTsEeqVBMJhRRVLrg" type="5002">
@@ -762,7 +762,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5doL4jTsEeqVBMJhRRVLrg"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_5dm9xjTsEeqVBMJhRRVLrg" fontName="Roboto" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5dm9xzTsEeqVBMJhRRVLrg" x="576" width="100" height="30"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5dm9xzTsEeqVBMJhRRVLrg" x="552" width="100" height="30"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_5dm9yjTsEeqVBMJhRRVLrg" type="2001" element="_5djTbzTsEeqVBMJhRRVLrg">
           <children xmi:type="notation:Node" xmi:id="_5dm9zTTsEeqVBMJhRRVLrg" type="5002">
@@ -774,6 +774,127 @@
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_5dm9yzTsEeqVBMJhRRVLrg" fontName="Roboto" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5dm9zDTsEeqVBMJhRRVLrg" x="156" width="200" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2ZS0ED3zEeqRipaA20NGrQ" type="2001" element="_2WDS0D3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2Zr1oD3zEeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_2Zr1oT3zEeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2aHTcD3zEeqRipaA20NGrQ" type="3003" element="_2WEg8D3zEeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2aHTcT3zEeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aHTcj3zEeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2ZS0ET3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ZS0Ej3zEeqRipaA20NGrQ" x="1356" width="100" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2ZwuID3zEeqRipaA20NGrQ" type="2001" element="_2WGWID3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2ZzKYD3zEeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_2ZzKYT3zEeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2aIhkD3zEeqRipaA20NGrQ" type="3003" element="_2WGWIT3zEeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2aIhkT3zEeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aIhkj3zEeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2ZwuIT3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ZwuIj3zEeqRipaA20NGrQ" x="1512" width="100" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2Z0YgD3zEeqRipaA20NGrQ" type="2001" element="_2WHkQD3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2Z3b0D3zEeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_2Z3b0T3zEeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2aOBID3zEeqRipaA20NGrQ" type="3003" element="_2WHkQT3zEeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2aOBIT3zEeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aOBIj3zEeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2Z0YgT3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2Z0Ygj3zEeqRipaA20NGrQ" x="1668" width="100" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2Z4C4D3zEeqRipaA20NGrQ" type="2001" element="_2WILUT3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2Z-JgD3zEeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_2Z-JgT3zEeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2aOoMD3zEeqRipaA20NGrQ" type="3003" element="_2WILUj3zEeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2aOoMT3zEeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aOoMj3zEeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2Z4C4T3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2Z4C4j3zEeqRipaA20NGrQ" x="1836" width="100" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2Z-wkD3zEeqRipaA20NGrQ" type="2001" element="_2WIyYT3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2aE3MD3zEeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_2aE3MT3zEeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2aPPQD3zEeqRipaA20NGrQ" type="3003" element="_2WJZcD3zEeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2aPPQT3zEeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aPPQj3zEeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2Z-wkT3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2Z-wkj3zEeqRipaA20NGrQ" x="1188" width="100" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2aFeQD3zEeqRipaA20NGrQ" type="2001" element="_2WKnkD3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2aGFUD3zEeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_2aGFUT3zEeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2aVV4D3zEeqRipaA20NGrQ" type="3003" element="_2WKnkT3zEeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2aVV4T3zEeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aVV4j3zEeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2aFeQT3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2aFeQj3zEeqRipaA20NGrQ" x="1188" y="120" width="100" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_AJbRYD30EeqRipaA20NGrQ" type="2001" element="_AHJZcj30EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_AJb4cD30EeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_AJb4cT30EeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Hpa4ED30EeqRipaA20NGrQ" type="3017" element="_HnaF4D30EeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Hpa4ET30EeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hpa4Ej30EeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_AJbRYT30EeqRipaA20NGrQ" fontName="Roboto"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AJbRYj30EeqRipaA20NGrQ" x="391" y="-108" width="85" height="73"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_KQFGYD32EeqRipaA20NGrQ" type="2001" element="_KOOsQD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_KQFtcD32EeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_KQFtcT32EeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_KQIwwD32EeqRipaA20NGrQ" type="3002" element="_KOQhcD32EeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_KQIwwT32EeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KQIwwj32EeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_KQFGYT32EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KQFGYj32EeqRipaA20NGrQ" x="1495" y="-87" width="133" height="43"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_KQG7kD32EeqRipaA20NGrQ" type="2001" element="_KORvkD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_KQHioD32EeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_KQHioT32EeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_KQJX0D32EeqRipaA20NGrQ" type="3002" element="_KORvkT32EeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_KQJX0T32EeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KQJX0j32EeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_KQG7kT32EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KQG7kj32EeqRipaA20NGrQ" x="1825" y="-84" width="121" height="37"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qZIGcD32EeqRipaA20NGrQ" type="2001" element="_qWheZT32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_qZItgD32EeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qZItgT32EeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_vFzQ8D32EeqRipaA20NGrQ" type="3016" element="_vDdHkD32EeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_vFzQ8T32EeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vFzQ8j32EeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qZIGcT32EeqRipaA20NGrQ" fontName="Roboto"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qZIGcj32EeqRipaA20NGrQ" x="540" y="-96" width="133" height="49"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_7P9gsD32EeqRipaA20NGrQ" type="2001" element="_7N0ysD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_7P-HwD32EeqRipaA20NGrQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_7P-HwT32EeqRipaA20NGrQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Ag-uYD33EeqRipaA20NGrQ" type="3002" element="_Aexu8T33EeqRipaA20NGrQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Ag-uYT33EeqRipaA20NGrQ" fontName="Roboto"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ag-uYj33EeqRipaA20NGrQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_7P9gsT32EeqRipaA20NGrQ" fontName="Roboto"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7P9gsj32EeqRipaA20NGrQ" x="535" y="-204" width="133" height="64"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_5dlIkjTsEeqVBMJhRRVLrg"/>
         <edges xmi:type="notation:Edge" xmi:id="_5doL5jTsEeqVBMJhRRVLrg" type="4001" element="_5dj6cDTsEeqVBMJhRRVLrg" source="_5dlvojTsEeqVBMJhRRVLrg" target="_5dmWsjTsEeqVBMJhRRVLrg">
@@ -836,15 +957,114 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_5dozCTTsEeqVBMJhRRVLrg" routing="Tree"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_5dozCjTsEeqVBMJhRRVLrg" fontName="Roboto" fontHeight="12"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5dozCzTsEeqVBMJhRRVLrg" points="[0, 0, 80, 60]$[-80, -60, 0, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5dozCzTsEeqVBMJhRRVLrg" points="[0, 0, -240, 60]$[240, -60, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5dozEjTsEeqVBMJhRRVLrg" id="(0.5,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5dozEzTsEeqVBMJhRRVLrg" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_2acDkD3zEeqRipaA20NGrQ" type="4001" element="_2WNq4j3zEeqRipaA20NGrQ" source="_2aFeQD3zEeqRipaA20NGrQ" target="_2Z-wkD3zEeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_2afG4D3zEeqRipaA20NGrQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2afG4T3zEeqRipaA20NGrQ" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2agVAD3zEeqRipaA20NGrQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2agVAT3zEeqRipaA20NGrQ" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2ahjID3zEeqRipaA20NGrQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ahjIT3zEeqRipaA20NGrQ" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2acDkT3zEeqRipaA20NGrQ" routing="Tree"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_2acDkj3zEeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2acDkz3zEeqRipaA20NGrQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2aqtED3zEeqRipaA20NGrQ" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2arUID3zEeqRipaA20NGrQ" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LMZaID31EeqRipaA20NGrQ" type="4001" element="_LKvNQD31EeqRipaA20NGrQ" source="_5dmWsjTsEeqVBMJhRRVLrg" target="_AJbRYD30EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_LMaBMD31EeqRipaA20NGrQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LMaBMT31EeqRipaA20NGrQ" x="-6" y="6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LMaBMj31EeqRipaA20NGrQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LMaBMz31EeqRipaA20NGrQ" x="9" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LMaBND31EeqRipaA20NGrQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LMaBNT31EeqRipaA20NGrQ" x="8" y="-8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LMZaIT31EeqRipaA20NGrQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LMZaIj31EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LMZaIz31EeqRipaA20NGrQ" points="[-1, -15, 0, 72]$[-1, -50, 0, 37]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LMaoQD31EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LMaoQT31EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_bFJmED32EeqRipaA20NGrQ" type="4001" element="_bC-b0D32EeqRipaA20NGrQ" source="_2ZwuID3zEeqRipaA20NGrQ" target="_KQFGYD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_bFJmFD32EeqRipaA20NGrQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bFJmFT32EeqRipaA20NGrQ" x="-4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bFKNID32EeqRipaA20NGrQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bFKNIT32EeqRipaA20NGrQ" x="7" y="1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bFKNIj32EeqRipaA20NGrQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bFKNIz32EeqRipaA20NGrQ" x="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_bFJmET32EeqRipaA20NGrQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_bFJmEj32EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bFJmEz32EeqRipaA20NGrQ" points="[-1, -15, 0, 66]$[-1, -59, 0, 22]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bFKNJD32EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bFKNJT32EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_bFK0MD32EeqRipaA20NGrQ" type="4001" element="_bC_C5D32EeqRipaA20NGrQ" source="_2Z4C4D3zEeqRipaA20NGrQ" target="_KQG7kD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_bFK0ND32EeqRipaA20NGrQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bFK0NT32EeqRipaA20NGrQ" x="-8" y="1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bFK0Nj32EeqRipaA20NGrQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bFK0Nz32EeqRipaA20NGrQ" x="12" y="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bFLbQD32EeqRipaA20NGrQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bFLbQT32EeqRipaA20NGrQ" x="11" y="-1"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_bFK0MT32EeqRipaA20NGrQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_bFK0Mj32EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bFK0Mz32EeqRipaA20NGrQ" points="[-1, -15, 0, 66]$[-1, -62, 0, 19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bFLbQj32EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bFLbQz32EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_1Nm8sD32EeqRipaA20NGrQ" type="4001" element="_1LigJD32EeqRipaA20NGrQ" source="_5dm9xTTsEeqVBMJhRRVLrg" target="_qZIGcD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_1NnjwD32EeqRipaA20NGrQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1NnjwT32EeqRipaA20NGrQ" x="-4" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1Nnjwj32EeqRipaA20NGrQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1Nnjwz32EeqRipaA20NGrQ" x="12" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1NnjxD32EeqRipaA20NGrQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1NnjxT32EeqRipaA20NGrQ" x="11" y="7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_1Nm8sT32EeqRipaA20NGrQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_1Nm8sj32EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1Nm8sz32EeqRipaA20NGrQ" points="[-8, -15, 44, 86]$[-32, -62, 20, 39]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1NoK0D32EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1NoK0T32EeqRipaA20NGrQ" id="(0.07518796992481203,0.20408163265306123)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_Ag_8gD33EeqRipaA20NGrQ" type="4001" element="_Ae2AYD33EeqRipaA20NGrQ" source="_qZIGcD32EeqRipaA20NGrQ" target="_7P9gsD32EeqRipaA20NGrQ">
+          <children xmi:type="notation:Node" xmi:id="_AhAjkD33EeqRipaA20NGrQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AhAjkT33EeqRipaA20NGrQ" x="3" y="-3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_AhAjkj33EeqRipaA20NGrQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AhAjkz33EeqRipaA20NGrQ" x="13" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_AhAjlD33EeqRipaA20NGrQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AhAjlT33EeqRipaA20NGrQ" x="-2" y="-2"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Ag_8gT33EeqRipaA20NGrQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Ag_8gj33EeqRipaA20NGrQ" fontName="Roboto" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ag_8gz33EeqRipaA20NGrQ" points="[-12, -24, 49, 98]$[-34, -68, 27, 54]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AhBKoD33EeqRipaA20NGrQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AhBKoT33EeqRipaA20NGrQ" id="(0.07518796992481203,0.15625)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_5disUDTsEeqVBMJhRRVLrg" name="website" width="10" height="3" resizeKind="NSEW">
       <target xmi:type="ASEmL:Use" href="main.aseml#//@use.0"/>
       <semanticElements xmi:type="ASEmL:Use" href="main.aseml#//@use.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:Square" uid="_5disUTTsEeqVBMJhRRVLrg" labelSize="12" labelPosition="node" width="10" height="3" color="253,206,137">
         <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Use']/@style"/>
       </ownedStyle>
@@ -858,7 +1078,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Init']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_5djTYzTsEeqVBMJhRRVLrg" name="init code" incomingEdges="_5dj6cDTsEeqVBMJhRRVLrg" width="10" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_5djTYzTsEeqVBMJhRRVLrg" name="init code" outgoingEdges="_LKvNQD31EeqRipaA20NGrQ" incomingEdges="_5dj6cDTsEeqVBMJhRRVLrg" width="10" height="3" resizeKind="NSEW">
       <target xmi:type="ASEmL:InitCode" href="main.aseml#//@init/@code.0"/>
       <semanticElements xmi:type="ASEmL:InitCode" href="main.aseml#//@init/@code.0"/>
       <ownedStyle xmi:type="diagram:Square" uid="_5djTZDTsEeqVBMJhRRVLrg" labelSize="12" labelPosition="node" width="10" height="3">
@@ -882,9 +1102,12 @@
       </ownedStyle>
       <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitCode']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_5djTbDTsEeqVBMJhRRVLrg" name="init code" incomingEdges="_5dj6fzTsEeqVBMJhRRVLrg" width="10" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_5djTbDTsEeqVBMJhRRVLrg" name="init code" outgoingEdges="_1LigJD32EeqRipaA20NGrQ" incomingEdges="_5dj6fzTsEeqVBMJhRRVLrg" width="10" height="3" resizeKind="NSEW">
       <target xmi:type="ASEmL:InitCode" href="main.aseml#//@init/@code.3"/>
       <semanticElements xmi:type="ASEmL:InitCode" href="main.aseml#//@init/@code.3"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:Square" uid="_5djTbTTsEeqVBMJhRRVLrg" labelSize="12" labelPosition="node" width="10" height="3">
         <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitCode']/@style"/>
       </ownedStyle>
@@ -929,6 +1152,175 @@
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_5dj6gTTsEeqVBMJhRRVLrg" labelSize="12"/>
       </ownedStyle>
       <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToInitCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_2WDS0D3zEeqRipaA20NGrQ" name="run code" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code"/>
+      <semanticElements xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_2WEg8D3zEeqRipaA20NGrQ" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_2WGWID3zEeqRipaA20NGrQ" name="run code" outgoingEdges="_bC-b0D32EeqRipaA20NGrQ" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@else.0/@code.0"/>
+      <semanticElements xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@else.0/@code.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_2WGWIT3zEeqRipaA20NGrQ" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_2WHkQD3zEeqRipaA20NGrQ" name="run code" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@code.0"/>
+      <semanticElements xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@code.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_2WHkQT3zEeqRipaA20NGrQ" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_2WILUT3zEeqRipaA20NGrQ" name="run code" outgoingEdges="_bC_C5D32EeqRipaA20NGrQ" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@code"/>
+      <semanticElements xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@code"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_2WILUj3zEeqRipaA20NGrQ" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_2WIyYT3zEeqRipaA20NGrQ" name="run code" incomingEdges="_2WNq4j3zEeqRipaA20NGrQ" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@run/@code.0"/>
+      <semanticElements xmi:type="ASEmL:RunCode" href="main.aseml#//@run/@code.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_2WJZcD3zEeqRipaA20NGrQ" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_2WKnkD3zEeqRipaA20NGrQ" name="run" outgoingEdges="_2WNq4j3zEeqRipaA20NGrQ" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:Run" href="main.aseml#//@run"/>
+      <semanticElements xmi:type="ASEmL:Run" href="main.aseml#//@run"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_2WKnkT3zEeqRipaA20NGrQ" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Run']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Run']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_2WNq4j3zEeqRipaA20NGrQ" sourceNode="_2WKnkD3zEeqRipaA20NGrQ" targetNode="_2WIyYT3zEeqRipaA20NGrQ">
+      <target xmi:type="ASEmL:Run" href="main.aseml#//@run"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_2WOR8D3zEeqRipaA20NGrQ" size="2" routingStyle="tree" strokeColor="233,185,110">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToRunCode']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_2WOR8T3zEeqRipaA20NGrQ" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToRunCode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_AHJZcj30EeqRipaA20NGrQ" name="LED" incomingEdges="_LKvNQD31EeqRipaA20NGrQ" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:InitPin" href="main.aseml#//@init/@code.0/@pin"/>
+      <semanticElements xmi:type="ASEmL:InitPin" href="main.aseml#//@init/@code.0/@pin"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Lozenge" uid="_HnaF4D30EeqRipaA20NGrQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:LozengeNodeDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitPin']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitPin']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_LKvNQD31EeqRipaA20NGrQ" sourceNode="_5djTYzTsEeqVBMJhRRVLrg" targetNode="_AHJZcj30EeqRipaA20NGrQ">
+      <target xmi:type="ASEmL:InitCode" href="main.aseml#//@init/@code.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LKv0UD31EeqRipaA20NGrQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToInitPin']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_LKv0UT31EeqRipaA20NGrQ" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToInitPin']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_KOOsQD32EeqRipaA20NGrQ" name="SHOWCASE" incomingEdges="_bC-b0D32EeqRipaA20NGrQ" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:Return" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@else.0/@code.0/@return"/>
+      <semanticElements xmi:type="ASEmL:Return" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@else.0/@code.0/@return"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Dot" uid="_KOQhcD32EeqRipaA20NGrQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:DotDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Return']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Return']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_KORvkD32EeqRipaA20NGrQ" name="SHOWCASE" incomingEdges="_bC_C5D32EeqRipaA20NGrQ" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:Return" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@code/@return"/>
+      <semanticElements xmi:type="ASEmL:Return" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@code/@return"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Dot" uid="_KORvkT32EeqRipaA20NGrQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:DotDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Return']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Return']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_bC-b0D32EeqRipaA20NGrQ" sourceNode="_2WGWID3zEeqRipaA20NGrQ" targetNode="_KOOsQD32EeqRipaA20NGrQ">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@arg/@code.0/@code/@any/@logical/@if/@else.0/@code.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bC_C4D32EeqRipaA20NGrQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='RunCodeToReturn']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bC_C4T32EeqRipaA20NGrQ" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='RunCodeToReturn']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_bC_C5D32EeqRipaA20NGrQ" sourceNode="_2WILUT3zEeqRipaA20NGrQ" targetNode="_KORvkD32EeqRipaA20NGrQ">
+      <target xmi:type="ASEmL:RunCode" href="main.aseml#//@init/@code.2/@pageHandle/@code.0/@code"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bC_C5T32EeqRipaA20NGrQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='RunCodeToReturn']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bC_C5j32EeqRipaA20NGrQ" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='RunCodeToReturn']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qWheZT32EeqRipaA20NGrQ" name="Remote Detonator" outgoingEdges="_Ae2AYD33EeqRipaA20NGrQ" incomingEdges="_1LigJD32EeqRipaA20NGrQ" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:InitWiFi" href="main.aseml#//@init/@code.3/@wifi"/>
+      <semanticElements xmi:type="ASEmL:InitWiFi" href="main.aseml#//@init/@code.3/@wifi"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Ellipse" uid="_vDdHkD32EeqRipaA20NGrQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:EllipseNodeDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitWiFi']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitWiFi']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_1LigJD32EeqRipaA20NGrQ" sourceNode="_5djTbDTsEeqVBMJhRRVLrg" targetNode="_qWheZT32EeqRipaA20NGrQ">
+      <target xmi:type="ASEmL:InitCode" href="main.aseml#//@init/@code.3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1LjHMD32EeqRipaA20NGrQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToInitWiFi']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1LjHMT32EeqRipaA20NGrQ" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToInitWiFi']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_7N0ysD32EeqRipaA20NGrQ" name="SHOWCASE" incomingEdges="_Ae2AYD33EeqRipaA20NGrQ" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ASEmL:WiFiLink" href="main.aseml#//@init/@code.3/@wifi/@buttonLinks.0"/>
+      <semanticElements xmi:type="ASEmL:WiFiLink" href="main.aseml#//@init/@code.3/@wifi/@buttonLinks.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Dot" uid="_Aexu8T33EeqRipaA20NGrQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:DotDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='WiFiLink']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:NodeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='WiFiLink']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ae2AYD33EeqRipaA20NGrQ" sourceNode="_qWheZT32EeqRipaA20NGrQ" targetNode="_7N0ysD32EeqRipaA20NGrQ">
+      <target xmi:type="ASEmL:InitWiFi" href="main.aseml#//@init/@code.3/@wifi"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Ae2AYT33EeqRipaA20NGrQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToWiFiLink']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Ae2AYj33EeqRipaA20NGrQ" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:EdgeMapping" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@edgeMappings[name='ToWiFiLink']"/>
     </ownedDiagramElements>
     <description xmi:type="description_3:DiagramDescription" href="platform:/resource/org.jonpas.aseml.design/description/aseml.odesign#//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_5dheMTTsEeqVBMJhRRVLrg"/>

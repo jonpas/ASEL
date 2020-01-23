@@ -39,6 +39,55 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
+        <nodeMappings name="PreProcInit" domainClass="ASEmL::PreProcInit">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="preprocessor init" labelPosition="node" resizeKind="NSEW" width="20" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="RunCode" domainClass="ASEmL::RunCode">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="run code" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Run" semanticCandidatesExpression="feature:run" domainClass="ASEmL::Run">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="run" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="InitPin" domainClass="ASEmL::InitPin">
+          <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Return" domainClass="ASEmL::Return">
+          <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="InitWiFi" domainClass="ASEmL::InitWiFi">
+          <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelExpression="feature:ssid" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="WiFiLink" domainClass="ASEmL::WiFiLink">
+          <style xsi:type="style:DotDescription" labelSize="12" labelExpression="feature:button" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
         <edgeMappings name="ToInitCode" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Init']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitCode']" targetFinderExpression="feature:code">
           <style sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -47,7 +96,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ToRunCode" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='Run'] //@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Prepare']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='RunCode']" targetFinderExpression="feature:code">
+        <edgeMappings name="ToRunCode" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Run'] //@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Prepare']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']" targetFinderExpression="feature:code">
           <style sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -55,7 +104,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ToPreProcInit" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Init']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='PreProcInit']">
+        <edgeMappings name="ToPreProcInit" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Init']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='PreProcInit']" targetFinderExpression="feature:preproc">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -63,7 +112,39 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ToPreProcRun" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@nodeMappings[name='Run'] //@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Prepare']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='PreProcRun']">
+        <edgeMappings name="ToPreProcRun" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Run'] //@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Prepare']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='PreProcRun']" targetFinderExpression="feature:preproc">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ToInitPin" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitCode']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitPin']" targetFinderExpression="feature:pin">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RunCodeToReturn" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='RunCode']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='Return']" targetFinderExpression="feature:return">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ToInitWiFi" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitCode']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitWiFi']" targetFinderExpression="feature:wifi">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ToWiFiLink" sourceMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='InitWiFi']" targetMapping="//@ownedViewpoints[name='ASEmL']/@ownedRepresentations[name='ASEmL%20Diagram']/@defaultLayer/@nodeMappings[name='WiFiLink']" targetFinderExpression="feature:buttonLinks">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -72,27 +153,6 @@
           </style>
         </edgeMappings>
       </defaultLayer>
-      <nodeMappings name="PreProcInit" domainClass="ASEmL::PreProcInit">
-        <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="preprocessor init" labelPosition="node" resizeKind="NSEW" width="20" height="3">
-          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </nodeMappings>
-      <nodeMappings name="RunCode" domainClass="ASEmL::RunCode">
-        <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="run code" labelPosition="node" resizeKind="NSEW" width="10" height="3">
-          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </nodeMappings>
-      <nodeMappings name="Run" semanticCandidatesExpression="feature:run" domainClass="ASEmL::Run">
-        <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="run" labelPosition="node" resizeKind="NSEW" width="10" height="3">
-          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </nodeMappings>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.jonpas.aseml.design.Services"/>
   </ownedViewpoints>
